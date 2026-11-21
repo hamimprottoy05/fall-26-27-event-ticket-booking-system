@@ -9,11 +9,7 @@
 }
 
 
-/* =====================================================================
-   REGISTRATION PAGE: choose a type of user, then see its fields
-   ===================================================================== */
 
-/* Hidden until the user picks a type; register.js sets style.display */
 .form-body,
 .type-fields {
   display: none;
