@@ -66,16 +66,16 @@ a:hover {
 .topnav {
   position: sticky;
   top: 0;
-  z-index: 10;                    /* stays above the page content */
+  z-index: 10;                    
   background-color: #2B2F55;
   padding: 0 16px;
-  overflow-x: auto;               /* scroll sideways on small screens */
+  overflow-x: auto;              
   white-space: nowrap;
 }
 
 .topnav a,
 .topnav button {
-  display: inline-block;          /* side by side, but padding works */
+  display: inline-block;          
   color: #F2F2F2;
   background-color: transparent;
   border: none;
@@ -94,7 +94,7 @@ a:hover {
   color: white;
 }
 
-/* The current section gets the "active" class from JavaScript */
+
 .topnav a.active,
 .topnav button.active {
   border-bottom: 3px solid #C9A7F5;
@@ -103,18 +103,15 @@ a:hover {
 }
 
 
-/* ---------------------------------------------------------------------
-   3. LAYOUT: CONTAINER, SECTIONS AND CARDS
-   max-width + margin: 0 auto keeps the page centred on any screen
-   --------------------------------------------------------------------- */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px;
-  min-height: 75vh;               /* keeps the footer near the bottom on short pages */
+  min-height: 75vh;               
 }
 
-/* Every page section is hidden until showSection() displays it */
+
 .page-section {
   display: none;
 }
@@ -129,7 +126,7 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* A white box with rounded corners and a soft shadow (Exercise 1: Profile card) */
+
 .card {
   background-color: white;
   border-radius: 12px;
@@ -144,7 +141,7 @@ a:hover {
   border-bottom: 2px solid #EEEAF5;
 }
 
-/* Two columns side by side; they wrap onto new lines on small screens */
+
 .row {
   display: flex;
   flex-wrap: wrap;
