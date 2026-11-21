@@ -1,11 +1,4 @@
-/* =====================================================================
-   EventNest Event and Ticket Booking System  -  organizer-register.css
-   ---------------------------------------------------------------------
-   Styles used only by the registration page (register.html).
-   It is linked AFTER organizer.css in register.html.
-   ===================================================================== */
 
-/* The login and register boxes: centred, never wider than the screen */
 .auth-box {
   max-width: 480px;
   margin: 40px auto;
