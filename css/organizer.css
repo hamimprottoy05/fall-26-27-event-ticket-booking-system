@@ -322,12 +322,9 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   6. TABLES
-   <table>, <thead>, <tbody>, <th>, <td> for tabular data
-   --------------------------------------------------------------------- */
+
 .table-wrapper {
-  overflow-x: auto;              /* wide tables scroll inside the card */
+  overflow-x: auto;              
 }
 
 .data-table {
@@ -349,13 +346,13 @@ input[type="checkbox"] {
   border-bottom: 1px solid #EEEAF5;
 }
 
-/* Ids and action buttons never break onto two lines */
+
 .data-table td:first-child,
 .data-table td:last-child {
   white-space: nowrap;
 }
 
-/* Striped rows with a pseudo-class */
+
 .data-table tbody tr:nth-child(even) {
   background-color: #FAF8FD;
 }
@@ -374,7 +371,7 @@ input[type="checkbox"] {
   padding: 20px;
 }
 
-/* The search box and filters above a table */
+
 .search-bar {
   display: flex;
   flex-wrap: wrap;
@@ -399,9 +396,6 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   7. BADGES AND MESSAGES
-   --------------------------------------------------------------------- */
 .badge {
   display: inline-block;
   padding: 2px 10px;
@@ -426,7 +420,7 @@ input[type="checkbox"] {
 .badge.purple { background-color: #7B3FC4; }
 .badge.teal   { background-color: #00838F; }
 
-/* A message box; hidden until JavaScript shows it */
+
 .message {
   display: none;
   padding: 10px 14px;
