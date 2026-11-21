@@ -1,0 +1,464 @@
+/* =====================================================================
+   EventNest Event & Ticket Booking System  -  login.css  -  Login page (login.html)
+   ---------------------------------------------------------------------
+   Linked only from this page. Shared rules (reset, header, navigation,
+   layout, forms, buttons, tables, badges, footer) are repeated in each
+   css file so that every page has its own stylesheet.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. RESET AND PAGE DEFAULTS
+   Universal selector reset (Lecture 02: "* { margin: 0; }")
+   box-sizing: border-box makes width include padding and border
+   --------------------------------------------------------------------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;  /* ends with a generic family */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #F2F7F8;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+  color: #0B2239;
+}
+
+a {
+  color: #0E7C86;
+}
+
+a:hover {
+  color: #2BA7B3;
+}
+
+/* ---------------------------------------------------------------------
+   2. HEADER AND NAVIGATION BAR
+   Classic website layout: header, navigation, content, footer
+   --------------------------------------------------------------------- */
+
+.header {
+  background-color: #0B2239;
+  color: white;
+  padding: 14px 24px;
+  display: flex;                  /* Flexbox: logo left, user info right */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #7FE0E6;                 /* "Nest" in light purple */
+}
+
+.logo:hover {
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+/* The navigation bar sticks to the top while scrolling
+   (Lecture 02: position: sticky, Exercise 2: Navigation bar) */
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;                    /* stays above the page content */
+  background-color: #13375B;
+  padding: 0 16px;
+  overflow-x: auto;               /* scroll sideways on small screens */
+  white-space: nowrap;
+}
+
+.topnav a,
+.topnav button {
+  display: inline-block;          /* side by side, but padding works */
+  color: #F2F2F2;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: background-color 0.3s;
+}
+
+.topnav a:hover,
+.topnav button:hover {
+  background-color: #1F4E7F;
+  color: white;
+}
+
+/* The current section gets the "active" class from JavaScript */
+
+.topnav a.active,
+.topnav button.active {
+  border-bottom: 3px solid #7FE0E6;
+  background-color: #1F4E7F;
+  color: white;
+}
+
+/* ---------------------------------------------------------------------
+   3. LAYOUT: CONTAINER, SECTIONS AND CARDS
+   max-width + margin: 0 auto keeps the page centred on any screen
+   --------------------------------------------------------------------- */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 75vh;               /* keeps the footer near the bottom on short pages */
+}
+
+/* Every page section is hidden until showSection() displays it */
+
+.page-title {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+}
+
+.page-subtitle {
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+/* A white box with rounded corners and a soft shadow (Exercise 1: Profile card) */
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #E6F1F3;
+}
+
+/* Two columns side by side; they wrap onto new lines on small screens */
+
+/* ---------------------------------------------------------------------
+   4. FORMS
+   <fieldset>, <legend> and a <table> to line up labels and fields
+   (Lecture 01: worked example - the patient registration form)
+   --------------------------------------------------------------------- */
+
+fieldset {
+  border: 1px solid #CBDDE0;
+  border-radius: 8px;
+  padding: 12px 16px 16px 16px;
+  margin-bottom: 16px;
+}
+
+legend {
+  font-weight: bold;
+  color: #0E7C86;
+  padding: 0 8px;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.form-table td {
+  padding: 6px 4px;
+  vertical-align: top;
+}
+
+.form-table td:first-child {
+  width: 35%;
+  padding-top: 12px;
+}
+
+label {
+  font-weight: 600;
+  color: #444444;
+}
+
+/* The labels next to radio buttons and checkboxes are normal weight */
+
+.option-label {
+  font-weight: normal;
+  margin-right: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #BFD0D3;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: white;
+}
+
+/* :focus keeps the selected field clearly visible for keyboard users */
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #2BA7B3;
+  border-color: #2BA7B3;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 4px;
+  accent-color: #0E7C86;
+}
+
+/* Red error text shown next to a field by JavaScript validation */
+
+.error {
+  display: block;
+  color: #C62828;
+  font-size: 0.85rem;
+  min-height: 1em;
+}
+
+/* ---------------------------------------------------------------------
+   5. BUTTONS
+   :hover with a transition (Lecture 02: Hover effects and transitions)
+   --------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  background-color: #0E7C86;
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #2BA7B3;
+  color: white;
+}
+
+.btn:focus {
+  outline: 3px solid orange;
+}
+
+.btn:disabled {
+  background-color: #BBBBBB;
+  cursor: not-allowed;
+}
+
+.btn-light {
+  background-color: white;
+  color: #0B2239;
+}
+
+.btn-light:hover {
+  background-color: #E6F1F3;
+  color: #0B2239;
+}
+
+.btn-small {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------------------
+   6. TABLES
+   <table>, <thead>, <tbody>, <th>, <td> for tabular data
+   --------------------------------------------------------------------- */
+
+/* Ids and action buttons never break onto two lines */
+
+/* Striped rows with a pseudo-class */
+
+/* The search box and filters above a table */
+
+/* ---------------------------------------------------------------------
+   7. BADGES AND MESSAGES
+   --------------------------------------------------------------------- */
+
+/* A message box; hidden until JavaScript shows it */
+
+.message {
+  display: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  border-left: 5px solid;
+}
+
+.message.success {
+  background-color: #E8F5E9;
+  border-color: #2E7D32;
+  color: #1B5E20;
+}
+
+.message.error {
+  background-color: #FFEBEE;
+  border-color: #C62828;
+  color: #B71C1C;
+}
+
+.message.info {
+  background-color: #E3F2FD;
+  border-color: #1565C0;
+  color: #0D47A1;
+}
+
+/* ---------------------------------------------------------------------
+   8. DASHBOARD WIDGETS
+   --------------------------------------------------------------------- */
+
+/* Statistic tiles laid out with CSS Grid (Lecture 02: Looking ahead) */
+
+/* Horizontal bar chart: JavaScript sets each bar's width with style.width */
+
+/* Progress bar for the customer's reading goal */
+
+/* Notice board: a fixed height with a scroll bar
+   (Lecture 02: Exercise 4 - overflow-y: auto, coloured border-left) */
+
+/* A result box used by the calculators and checkers */
+
+/* Reminder cards for a customer's borrowed books */
+
+/* ---------------------------------------------------------------------
+   9. HOME, LOGIN AND REGISTER PAGES
+   --------------------------------------------------------------------- */
+
+/* Hero area with a background colour and centred text */
+
+/* Four role cards on the home page */
+
+/* The login and register boxes: centred, never wider than the screen */
+
+.auth-box {
+  max-width: 480px;
+  margin: 40px auto;
+}
+
+.auth-box.wide {
+  max-width: 720px;
+}
+
+/* ---------------------------------------------------------------------
+   10. FOOTER
+   --------------------------------------------------------------------- */
+
+.footer {
+  background-color: #0B2239;
+  color: #B5C7CC;
+  text-align: center;
+  padding: 16px;
+  margin-top: 30px;
+  font-size: 0.88rem;
+}
+
+/* The card below the role cards on the home page */
+
+/* Reading goal (customer page) */
+
+/* Building map (volunteer page): JavaScript highlights one floor */
+
+/* =====================================================================
+   REGISTRATION PAGE: choose a type of user, then see its fields
+   ===================================================================== */
+
+/* Hidden until the user picks a type; register.js sets style.display */
+
+.form-body,
+.type-fields {
+  display: none;
+}
+
+/* Three big clickable cards for Student / Librarian / Visitor */
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.type-option {
+  display: block;
+  border: 2px solid #CBDDE0;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  font-weight: normal;
+  background-color: white;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.type-option:hover {
+  border-color: #2BA7B3;
+}
+
+.type-option strong {
+  font-size: 1.05rem;
+  color: #0B2239;
+}
+
+.type-option .hint {
+  display: block;
+  margin-top: 4px;
+}
+
+/* Added by JavaScript to the chosen card */
+
+.type-option.selected {
+  border-color: #0E7C86;
+  background-color: #E3F4F6;
+}
+
+.btn-block {
+  width: 100%;
+  padding: 11px;
+  font-size: 1rem;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 16px;
+}
