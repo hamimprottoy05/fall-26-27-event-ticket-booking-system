@@ -448,11 +448,7 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   8. STAT TILES AND PROGRESS BARS
-   --------------------------------------------------------------------- */
 
-/* Statistic tiles laid out with CSS Grid (Lecture 02: Looking ahead) */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -484,7 +480,7 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
-/* Horizontal bar chart: JavaScript sets each bar's width with style.width */
+
 .bar-row {
   display: flex;
   align-items: center;
@@ -519,7 +515,7 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
-/* Progress bar for the student's reading goal */
+
 .progress-track {
   background-color: #EEEAF5;
   border-radius: 12px;
@@ -540,8 +536,7 @@ input[type="checkbox"] {
   transition: width 0.6s;
 }
 
-/* Notice board: a fixed height with a scroll bar
-   (Lecture 02: Exercise 4 - overflow-y: auto, coloured border-left) */
+
 .notice-board {
   height: 380px;
   overflow-y: auto;
@@ -565,7 +560,7 @@ input[type="checkbox"] {
   color: #888888;
 }
 
-/* A result box used by the calculators and checkers */
+
 .result-box {
   background-color: #F7F3FC;
   border: 2px dashed #C9A7F5;
@@ -580,7 +575,7 @@ input[type="checkbox"] {
   color: #663399;
 }
 
-/* Reminder cards for a student's borrowed books */
+
 .reminder {
   border-radius: 10px;
   padding: 14px 16px;
@@ -594,11 +589,7 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   9. HOME, LOGIN AND REGISTER PAGES
-   --------------------------------------------------------------------- */
 
-/* Hero area with a background colour and centred text */
 .hero {
   background-color: #1B1F3B;
   color: white;
@@ -629,7 +620,7 @@ input[type="checkbox"] {
   margin: 10px 0 24px 0;
 }
 
-/* Four role cards on the home page */
+
 .role-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -673,9 +664,7 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   10. FOOTER
-   --------------------------------------------------------------------- */
+
 .footer {
   background-color: #1B1F3B;
   color: #BBB6CC;
@@ -685,12 +674,12 @@ input[type="checkbox"] {
   font-size: 0.88rem;
 }
 
-/* The card below the role cards on the home page */
+
 .info-card {
   margin-top: 30px;
 }
 
-/* Reading goal (student page) */
+
 .goal-progress-heading {
   margin-top: 24px;
 }
@@ -703,7 +692,7 @@ input[type="checkbox"] {
   padding: 3px 0;
 }
 
-/* Building map (visitor page): JavaScript highlights one floor */
+
 .floor {
   border: 2px solid #D8D0E8;
   border-radius: 8px;
