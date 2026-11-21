@@ -9,3 +9,23 @@
 .auth-box.wide {
   max-width: 720px;
 }
+
+.type-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.type-tabs a {
+  padding: 8px 18px;
+  border: 1px solid #0E7C86;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #0E7C86;
+}
+
+.type-tabs a.active {
+  background-color: #0E7C86;
+  color: white;
+}

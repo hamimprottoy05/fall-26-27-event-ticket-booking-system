@@ -59,17 +59,20 @@ function validateLogin() {
 
   // 5. Open the right dashboard for this role
   let form = document.getElementById("loginForm");
-  switch (foundUser.role) {
+    switch (foundUser.role) {
     case "Admin":
-      form.action = "admin.html";
+      form.action = "admin/admin.html";
       break;
-    default:
-      // The other dashboards are not part of this admin build
-      showMessage("loginMessage", "Welcome " + foundUser.name + "! The " + foundUser.role.toLowerCase() +
-                  " dashboard is not built yet.", "info");
-      return false;
+    case "Organizer":
+      form.action = "organizer/events.html";
+      break;
+    case "Customer":
+      form.action = "customer/events.html";
+      break;
+    case "Volunteer":
+      form.action = "volunteer/tasks.html";
+      break;
   }
-
   console.log("Login OK: " + foundUser.name + " (" + foundUser.role + ") -> " + form.action);
   return true;
 }
