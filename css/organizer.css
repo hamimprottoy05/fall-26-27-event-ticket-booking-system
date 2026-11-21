@@ -823,7 +823,7 @@ input[type="checkbox"] {
   margin: 6px;
 }
 
-/* Footer with a few columns of links */
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -850,7 +850,7 @@ input[type="checkbox"] {
   color: white;
 }
 
-/* Contact Us details on the home page */
+
 .contact-table {
   margin: 10px 0;
   border-collapse: collapse;
@@ -867,9 +867,7 @@ input[type="checkbox"] {
 }
 
 
-/* =====================================================================
-   EVENT CARDS (home.html, events.html)
-   ===================================================================== */
+
 .event-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -889,7 +887,7 @@ input[type="checkbox"] {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* The coloured band on top of a card; its colour depends on the category */
+
 .event-top {
   display: flex;
   justify-content: space-between;
