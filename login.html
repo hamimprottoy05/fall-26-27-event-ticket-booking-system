@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Login | EventNest</title>
   <link rel="stylesheet" href="css/login.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -35,15 +37,7 @@
 
         <div id="loginMessage" class="message"></div>
 
-        <!--
-          onsubmit="return validateLogin()"
-          return false -> the form is NOT sent, the user stays here
-          return true  -> the browser opens the page written in "action".
-          JavaScript sets the action to admin.html for an Admin account.
 
-          The password input has NO name attribute, so it is never put in the URL (method="get").
-          With the PHP backend this becomes method="post" with name="password".
-        -->
         <form id="loginForm" action="index.html" method="get" onsubmit="return validateLogin()">
           <fieldset>
             <legend>Your account</legend>
@@ -84,4 +78,5 @@
   <script src="js/common.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>

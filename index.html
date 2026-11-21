@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
   <title>Home | EventNest</title>
   <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
 
-  <!-- ============ HEADER: website name on the left, Login and Register at the top right ============ -->
+  <!-- ============ HEADER ============ -->
   <header class="header">
     <a href="index.html" class="logo" id="siteLogo">EventNest</a>
     <div class="user-info">
@@ -18,7 +20,6 @@
     </div>
   </header>
 
-  <!-- The link you click gets the "active" class from JavaScript, so it shows the underline -->
   <nav class="topnav">
     <a href="index.html" id="nav-home" onclick="setActiveNav('home')" class="active">Home</a>
     <a href="#events" id="nav-events" onclick="setActiveNav('events')">Browse Events</a>
@@ -35,7 +36,8 @@
 
     <!-- Typing here filters the results below right away (onkeyup) -->
     <div class="hero-search">
-      <input type="text" id="eventSearch" placeholder="Search by event, venue or organizer..." onkeyup="renderEventList()">
+      <input type="text" id="eventSearch" placeholder="Search by event, venue or organizer..."
+        onkeyup="renderEventList()">
       <select id="eventCategory" onchange="renderEventList()">
         <option value="All">All categories</option>
         <option value="Music">Music</option>
@@ -46,7 +48,8 @@
         <option value="Art">Art</option>
       </select>
     </div>
-    <p class="hero-note">No account needed to browse. <a href="#events" class="hero-link" onclick="setActiveNav('events')">See the events &darr;</a></p>
+    <p class="hero-note">No account needed to browse. <a href="#events" class="hero-link"
+        onclick="setActiveNav('events')">See the events &darr;</a></p>
   </div>
 
   <main class="container">
@@ -86,7 +89,14 @@
         <div class="table-wrapper">
           <table class="data-table">
             <thead>
-              <tr><th>Event</th><th>Category</th><th>Date</th><th>Venue</th><th>Price</th><th>Tickets</th></tr>
+              <tr>
+                <th>Event</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>Price</th>
+                <th>Tickets</th>
+              </tr>
             </thead>
             <tbody id="eventBody"></tbody>
           </table>
@@ -154,7 +164,8 @@
         <div class="step">
           <span class="step-number">1</span>
           <h3>Register</h3>
-          <p>Open <a href="register.html">Register</a>, choose Customer, Organizer or Volunteer and fill in your details.</p>
+          <p>Open <a href="register.html">Register</a>, choose Customer, Organizer or Volunteer and fill in your
+            details.</p>
         </div>
         <div class="step">
           <span class="step-number">2</span>
@@ -169,7 +180,7 @@
       </div>
     </section>
 
-    <!-- ============ REFUNDS (written from the policy the admin sets) ============ -->
+    <!-- ============ REFUNDS ============ -->
     <section id="refunds" class="home-section">
       <div class="section-heading">
         <h2>Refund policy</h2>
@@ -194,7 +205,8 @@
             <td id="contactPhone">01711000000</td>
           </tr>
         </table>
-        <p class="hint">Need help with a booking or your account? Write to us and we will reply within one working day.</p>
+        <p class="hint">Need help with a booking or your account? Write to us and we will reply within one working day.
+        </p>
       </div>
     </section>
 
@@ -215,6 +227,7 @@
 
   <script src="js/data.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/home.js"></script>
+  <script src="js/index.js"></script>
 </body>
+
 </html>

@@ -1,17 +1,3 @@
-/* =====================================================================
-   EventNest Event & Ticket Booking System  -  admin.css  -  Admin dashboard (admin.html)
-   ---------------------------------------------------------------------
-   Linked only from this page. Shared rules (reset, header, navigation,
-   layout, forms, buttons, tables, badges, footer) are repeated in each
-   css file so that every page has its own stylesheet.
-   ===================================================================== */
-
-/* ---------------------------------------------------------------------
-   1. RESET AND PAGE DEFAULTS
-   Universal selector reset (Lecture 02: "* { margin: 0; }")
-   box-sizing: border-box makes width include padding and border
-   --------------------------------------------------------------------- */
-
 * {
   margin: 0;
   padding: 0;
@@ -19,14 +5,17 @@
 }
 
 body {
-  font-family: "Segoe UI", Arial, sans-serif;  /* ends with a generic family */
+  font-family: "Segoe UI", Arial, sans-serif;
+  /* ends with a generic family */
   font-size: 16px;
   line-height: 1.6;
   color: #333333;
   background-color: #F2F7F8;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   line-height: 1.3;
   color: #0B2239;
 }
@@ -39,16 +28,12 @@ a:hover {
   color: #2BA7B3;
 }
 
-/* ---------------------------------------------------------------------
-   2. HEADER AND NAVIGATION BAR
-   Classic website layout: header, navigation, content, footer
-   --------------------------------------------------------------------- */
-
 .header {
   background-color: #0B2239;
   color: white;
   padding: 14px 24px;
-  display: flex;                  /* Flexbox: logo left, user info right */
+  display: flex;
+  /* Flexbox: logo left, user info right */
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -64,7 +49,7 @@ a:hover {
 }
 
 .logo span {
-  color: #7FE0E6;                 /* "Nest" in light purple */
+  color: #7FE0E6;
 }
 
 .logo:hover {
@@ -78,22 +63,19 @@ a:hover {
   font-size: 0.95rem;
 }
 
-/* The navigation bar sticks to the top while scrolling
-   (Lecture 02: position: sticky, Exercise 2: Navigation bar) */
-
 .topnav {
   position: sticky;
   top: 0;
-  z-index: 10;                    /* stays above the page content */
+  z-index: 10;
   background-color: #13375B;
   padding: 0 16px;
-  overflow-x: auto;               /* scroll sideways on small screens */
+  overflow-x: auto;
   white-space: nowrap;
 }
 
 .topnav a,
 .topnav button {
-  display: inline-block;          /* side by side, but padding works */
+  display: inline-block;
   color: #F2F2F2;
   background-color: transparent;
   border: none;
@@ -112,8 +94,6 @@ a:hover {
   color: white;
 }
 
-/* The current section gets the "active" class from JavaScript */
-
 .topnav a.active,
 .topnav button.active {
   border-bottom: 3px solid #7FE0E6;
@@ -121,19 +101,12 @@ a:hover {
   color: white;
 }
 
-/* ---------------------------------------------------------------------
-   3. LAYOUT: CONTAINER, SECTIONS AND CARDS
-   max-width + margin: 0 auto keeps the page centred on any screen
-   --------------------------------------------------------------------- */
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px 16px;
-  min-height: 75vh;               /* keeps the footer near the bottom on short pages */
+  min-height: 75vh;
 }
-
-/* Every page section is hidden until showSection() displays it */
 
 .page-section {
   display: none;
@@ -149,8 +122,6 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* A white box with rounded corners and a soft shadow (Exercise 1: Profile card) */
-
 .card {
   background-color: white;
   border-radius: 12px;
@@ -165,7 +136,6 @@ a:hover {
   border-bottom: 2px solid #E6F1F3;
 }
 
-/* Two columns side by side; they wrap onto new lines on small screens */
 
 .row {
   display: flex;
@@ -187,12 +157,6 @@ a:hover {
   font-size: 0.85rem;
   color: #777777;
 }
-
-/* ---------------------------------------------------------------------
-   4. FORMS
-   <fieldset>, <legend> and a <table> to line up labels and fields
-   (Lecture 01: worked example - the patient registration form)
-   --------------------------------------------------------------------- */
 
 fieldset {
   border: 1px solid #CBDDE0;
@@ -227,8 +191,6 @@ label {
   color: #444444;
 }
 
-/* The labels next to radio buttons and checkboxes are normal weight */
-
 .option-label {
   font-weight: normal;
   margin-right: 12px;
@@ -252,8 +214,6 @@ textarea {
   background-color: white;
 }
 
-/* :focus keeps the selected field clearly visible for keyboard users */
-
 input:focus,
 select:focus,
 textarea:focus {
@@ -271,19 +231,12 @@ input[type="checkbox"] {
   accent-color: #0E7C86;
 }
 
-/* Red error text shown next to a field by JavaScript validation */
-
 .error {
   display: block;
   color: #C62828;
   font-size: 0.85rem;
   min-height: 1em;
 }
-
-/* ---------------------------------------------------------------------
-   5. BUTTONS
-   :hover with a transition (Lecture 02: Hover effects and transitions)
-   --------------------------------------------------------------------- */
 
 .btn {
   display: inline-block;
@@ -352,13 +305,8 @@ input[type="checkbox"] {
   font-size: 0.85rem;
 }
 
-/* ---------------------------------------------------------------------
-   6. TABLES
-   <table>, <thead>, <tbody>, <th>, <td> for tabular data
-   --------------------------------------------------------------------- */
-
 .table-wrapper {
-  overflow-x: auto;              /* wide tables scroll inside the card */
+  overflow-x: auto;
 }
 
 .data-table {
@@ -380,14 +328,10 @@ input[type="checkbox"] {
   border-bottom: 1px solid #E6F1F3;
 }
 
-/* Ids and action buttons never break onto two lines */
-
 .data-table td:first-child,
 .data-table td:last-child {
   white-space: nowrap;
 }
-
-/* Striped rows with a pseudo-class */
 
 .data-table tbody tr:nth-child(even) {
   background-color: #F7FBFB;
@@ -432,10 +376,6 @@ input[type="checkbox"] {
   margin-bottom: 8px;
 }
 
-/* ---------------------------------------------------------------------
-   7. BADGES AND MESSAGES
-   --------------------------------------------------------------------- */
-
 .badge {
   display: inline-block;
   padding: 2px 10px;
@@ -447,25 +387,42 @@ input[type="checkbox"] {
   white-space: nowrap;
 }
 
-.badge.admin     { background-color: #C62828; }
+.badge.admin {
+  background-color: #C62828;
+}
 
-.badge.organizer { background-color: #1565C0; }
+.badge.organizer {
+  background-color: #1565C0;
+}
 
-.badge.customer   { background-color: #2E7D32; }
+.badge.customer {
+  background-color: #2E7D32;
+}
 
-.badge.volunteer   { background-color: #EF6C00; }
+.badge.volunteer {
+  background-color: #EF6C00;
+}
 
-.badge.green  { background-color: #2E7D32; }
+.badge.green {
+  background-color: #2E7D32;
+}
 
-.badge.orange { background-color: #EF6C00; }
+.badge.orange {
+  background-color: #EF6C00;
+}
 
-.badge.red    { background-color: #C62828; }
+.badge.red {
+  background-color: #C62828;
+}
 
-.badge.blue   { background-color: #1565C0; }
+.badge.blue {
+  background-color: #1565C0;
+}
 
-.badge.grey   { background-color: #6C757D; }
+.badge.grey {
+  background-color: #6C757D;
+}
 
-/* A message box; hidden until JavaScript shows it */
 
 .message {
   display: none;
@@ -493,11 +450,6 @@ input[type="checkbox"] {
   color: #0D47A1;
 }
 
-/* ---------------------------------------------------------------------
-   8. DASHBOARD WIDGETS
-   --------------------------------------------------------------------- */
-
-/* Statistic tiles laid out with CSS Grid (Lecture 02: Looking ahead) */
 
 .stats-grid {
   display: grid;
@@ -530,7 +482,6 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
-/* Horizontal bar chart: JavaScript sets each bar's width with style.width */
 
 .bar-row {
   display: flex;
@@ -566,13 +517,6 @@ input[type="checkbox"] {
   font-size: 0.9rem;
 }
 
-/* Progress bar for the customer's reading goal */
-
-/* Notice board: a fixed height with a scroll bar
-   (Lecture 02: Exercise 4 - overflow-y: auto, coloured border-left) */
-
-/* A result box used by the calculators and checkers */
-
 .result-box {
   background-color: #F0F9FA;
   border: 2px dashed #7FE0E6;
@@ -587,22 +531,6 @@ input[type="checkbox"] {
   color: #0E7C86;
 }
 
-/* Reminder cards for a customer's borrowed books */
-
-/* ---------------------------------------------------------------------
-   9. HOME, LOGIN AND REGISTER PAGES
-   --------------------------------------------------------------------- */
-
-/* Hero area with a background colour and centred text */
-
-/* Four role cards on the home page */
-
-/* The login and register boxes: centred, never wider than the screen */
-
-/* ---------------------------------------------------------------------
-   10. FOOTER
-   --------------------------------------------------------------------- */
-
 .footer {
   background-color: #0B2239;
   color: #B5C7CC;
@@ -612,10 +540,6 @@ input[type="checkbox"] {
   font-size: 0.88rem;
 }
 
-/* The card below the role cards on the home page */
-
-/* Reading goal (customer page) */
-
 .read-list {
   margin: 0 0 14px 22px;
 }
@@ -624,64 +548,21 @@ input[type="checkbox"] {
   padding: 3px 0;
 }
 
-/* Building map (volunteer page): JavaScript highlights one floor */
-
-/* =====================================================================
-   REGISTRATION PAGE: choose a type of user, then see its fields
-   ===================================================================== */
-
-/* Hidden until the user picks a type; register.js sets style.display */
-
-/* Three big clickable cards for Student / Librarian / Visitor */
-
-/* Added by JavaScript to the chosen card */
-
-/* =====================================================================
-   HOME PAGE
-   ===================================================================== */
-
-/* The search box inside the hero */
-
-/* Every home section gets space above and below */
-
-/* Small feature strip under the hero */
-
-/* Role cards: the button sits at the bottom of every card */
-
-/* How it works: numbered steps */
 
 .step {
   background-color: white;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: relative;          /* the number is placed inside this box */
+  position: relative;
+  /* the number is placed inside this box */
   padding-top: 34px;
 }
 
-/* Call-to-action band near the bottom of the home page */
-
-/* Footer with a few columns of links */
-
-/* Contact Us details on the home page */
-
-/* =====================================================================
-   EXTRA RULES FOR THE EVENT ADMIN PAGES
-   ===================================================================== */
-
-/* Bar values like "125000 Tk" need more room than a plain number */
 
 .bar-value {
   width: 90px;
 }
-
-/* A small number box inside a table cell (Capacity Monitor) */
-
-/* The "Needs your attention" box on the dashboard */
-
-/* =====================================================================
-   MAINTENANCE CONTROL: the "visitor's screen" boxes
-   ===================================================================== */
 
 .visitor-screen {
   border: 3px solid #CBDDE0;
