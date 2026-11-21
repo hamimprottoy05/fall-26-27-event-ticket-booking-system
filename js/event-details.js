@@ -1,14 +1,6 @@
-/* =====================================================================
-   event-details.js  -  Details of one of my events (event information only)
-   (event-details.html)
-   ---------------------------------------------------------------------
-   The page address is  event-details.html?id=E-101
-   getQueryValue("id") (common.js) reads the id from the address.
-   An organizer can only open his or her own events.
-   ===================================================================== */
 
-// The organizer who is logged in. With the PHP backend this will come
-// from the session ($_SESSION) instead of being written here.
+
+
 const currentOrganizerId = "U-002";
 const currentOrganization = getOrganizationName(currentOrganizerId);
 
@@ -23,7 +15,7 @@ function showEventDetails() {
 
   let event = events[index];
 
-  document.getElementById("detailSection").style.display = "block";   // .page-section is hidden in the CSS
+  document.getElementById("detailSection").style.display = "block";   
   document.getElementById("detailCategory").innerHTML = event.category;
   document.getElementById("detailTitle").innerHTML = event.title;
   document.getElementById("detailDescription").innerHTML = event.description;
