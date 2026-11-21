@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Segoe UI", Arial, sans-serif;  /* ends with a generic family */
+  font-family: "Segoe UI", Arial, sans-serif;  
   font-size: 16px;
   line-height: 1.6;
   color: #333333;
@@ -27,15 +27,12 @@ a:hover {
 }
 
 
-/* ---------------------------------------------------------------------
-   2. HEADER AND NAVIGATION BAR
-   Classic website layout: header, navigation, content, footer
-   --------------------------------------------------------------------- */
+
 .header {
   background-color: #1B1F3B;
   color: white;
   padding: 14px 24px;
-  display: flex;                  /* Flexbox: logo left, user info right */
+  display: flex;                 
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
@@ -51,7 +48,7 @@ a:hover {
 }
 
 .logo span {
-  color: #C9A7F5;                 /* "Nest" in light purple */
+  color: #C9A7F5;                 
 }
 
 .logo:hover {
@@ -65,8 +62,7 @@ a:hover {
   font-size: 0.95rem;
 }
 
-/* The navigation bar sticks to the top while scrolling
-   (Lecture 02: position: sticky, Exercise 2: Navigation bar) */
+
 .topnav {
   position: sticky;
   top: 0;
