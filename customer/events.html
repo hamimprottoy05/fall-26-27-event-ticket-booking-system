@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Search events and save your favourites on EventNest">
+  <title>Events | EventNest</title>
+  <link rel="stylesheet" href="css/customer.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge student">Customer</span>
+      <span>Welcome</span>
+      <a href="login.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <button type="button" id="nav-allSection" onclick="showSection('allSection')">All Events</button>
+    <button type="button" id="nav-favSection" onclick="showSection('favSection')">My Favourites</button>
+    <a href="my-tickets.html">My Tickets</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- =========================================================
+         ALL EVENTS: Read and Search
+         ========================================================= -->
+    <section id="allSection" class="page-section">
+      <h2 class="page-title">All Events</h2>
+      <p class="page-subtitle">Search for an event. Click the heart to save it as a favourite.</p>
+
+      <div class="card">
+        <div class="search-bar">
+          <input type="text" id="eventSearch" placeholder="Search by event, venue or city..." onkeyup="renderEvents()">
+          <select id="eventCategory" onchange="renderEvents()">
+            <option value="All">All categories</option>
+            <option value="Concert">Concert</option>
+            <option value="Conference">Conference</option>
+            <option value="Sports">Sports</option>
+            <option value="Theatre">Theatre</option>
+            <option value="Workshop">Workshop</option>
+          </select>
+        </div>
+        <p class="result-count" id="eventCount"></p>
+        <div class="event-grid" id="eventGrid"></div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         UNIQUE FEATURE 3: FAVOURITE / WISHLIST EVENTS
+         ========================================================= -->
+    <section id="favSection" class="page-section">
+      <h2 class="page-title">My Favourite Events</h2>
+      <p class="page-subtitle" id="favSummary"></p>
+
+      <div class="card">
+        <div class="event-grid" id="favGrid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="js/customer-data.js"></script>
+  <script src="js/customer-common.js"></script>
+  <script src="js/customer-events.js"></script>
+</body>
+
+</html>

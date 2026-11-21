@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your digital tickets with QR codes on EventNest">
+  <title>My Tickets | EventNest</title>
+  <link rel="stylesheet" href="css/customer.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge student">Customer</span>
+      <span>Welcome</span>
+      <a href="login.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="events.html">Events</a>
+    <a href="my-tickets.html" class="active">My Tickets</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- =========================================================
+         MY BOOKINGS: Create (booking.html), Read, Update, Delete and Search
+         UNIQUE FEATURE 2: DIGITAL TICKET WITH QR CODE
+         ========================================================= -->
+    <h2 class="page-title">My Tickets</h2>
+    <p class="page-subtitle">Show the QR code at the entrance. Find an event first to book a new ticket.</p>
+
+    <div id="ticketMessage" class="message"></div>
+
+    <!-- EDIT a ticket: change the holder details and the seats (hidden until Edit is clicked) -->
+    <div class="card" id="editCard" style="display: none;">
+      <h3 id="ticketFormTitle">Edit Ticket</h3>
+      <form id="ticketForm" onsubmit="return saveTicket()">
+        <div class="row">
+          <div class="col">
+            <fieldset>
+              <legend>Ticket Details</legend>
+              <table class="form-table">
+                <tr>
+                  <td>Booking:</td>
+                  <td><strong id="ticketFormInfo"></strong></td>
+                </tr>
+                <tr>
+                  <td><label for="ticketName">Holder name:</label></td>
+                  <td>
+                    <input type="text" id="ticketName" placeholder="Name on the ticket">
+                    <span class="error" id="ticketNameError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="ticketPhone">Phone:</label></td>
+                  <td>
+                    <input type="tel" id="ticketPhone" placeholder="11 digits, e.g. 01712345678">
+                    <span class="error" id="ticketPhoneError"></span>
+                  </td>
+                </tr>
+              </table>
+            </fieldset>
+
+            <div class="result-box" id="ticketSummary"></div>
+            <p class="hint">You can have up to <span id="maxSeatsText"></span> seats in one booking.</p>
+
+            <input type="submit" id="ticketSaveButton" class="btn" value="Update Ticket">
+            <button type="button" class="btn btn-secondary" onclick="resetTicketForm()">Cancel</button>
+          </div>
+
+          <!-- CHANGE SEATS: green = available, red = booked, blue = selected -->
+          <div class="col-wide">
+            <h3>Change your seats</h3>
+            <div class="stage">STAGE</div>
+            <div class="seat-map" id="editSeatMap"></div>
+
+            <div class="legend">
+              <span><span class="legend-box available"></span>Available</span>
+              <span><span class="legend-box booked"></span>Booked</span>
+              <span><span class="legend-box selected"></span>Selected</span>
+            </div>
+            <span class="error" id="editSeatsError"></span>
+          </div>
+        </div>
+      </form>
+      <p class="hint">Only tickets of events that have not happened yet can be edited or cancelled.</p>
+    </div>
+
+    <div class="card">
+      <h3>My digital tickets</h3>
+      <div class="search-bar">
+        <input type="text" id="ticketSearch" placeholder="Search by event, booking id, seat or name..."
+          onkeyup="renderTickets()">
+      </div>
+      <p class="result-count" id="ticketCount"></p>
+      <div id="ticketList"></div>
+      <p><a href="events.html" class="btn btn-success">Book a New Ticket</a></p>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="js/customer-qrcode.js"></script>
+  <script src="js/customer-data.js"></script>
+  <script src="js/customer-common.js"></script>
+  <script src="js/customer-my-tickets.js"></script>
+</body>
+
+</html>
