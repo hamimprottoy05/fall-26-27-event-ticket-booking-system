@@ -1,22 +1,9 @@
-/* =====================================================================
-   bookings.js  -  Attendees and bookings of my events
-   (bookings.html)
-   ---------------------------------------------------------------------
-   Booking list : renderBookings() (search by name or id, filters)
-                  approveBooking() and cancelBooking()
-   Unique 3     : Seating Priority & Conflict Radar
-     Automatically detects Front-Row (Row A) requests, Split Seats across
-     non-adjacent positions, and Seat Clashes between active bookings
-     (helpers are in common.js).
-   ===================================================================== */
 
-// The organizer who is logged in. With the PHP backend this will come
-// from the session ($_SESSION) instead of being written here.
 const currentOrganizerId = "U-002";
 const currentOrganization = getOrganizationName(currentOrganizerId);
 
 
-// Fills the event drop-down with this organizer's events (createElement)
+
 function fillEventFilter() {
   let select = document.getElementById("bookingEventFilter");
 
@@ -31,9 +18,7 @@ function fillEventFilter() {
 }
 
 
-/* =====================================================================
-   VIEW ATTENDEE LIST + SEARCH (only bookings of this organizer's events)
-   ===================================================================== */
+
 function renderBookings() {
   let keyword = document.getElementById("bookingSearch").value;
   let eventFilter = document.getElementById("bookingEventFilter").value;
@@ -50,12 +35,12 @@ function renderBookings() {
   for (let i = 0; i < bookings.length; i++) {
     let booking = bookings[i];
     let event = events[findIndexById(events, booking.eventId)];
-    let isMine = (event !== undefined && event.organizer === currentOrganization);   // only my events
+    let isMine = (event !== undefined && event.organizer === currentOrganization);   
     if (isMine) {
       mine++;
     }
 
-    // Unique 3: Seating Priority & Conflict Radar flags
+    
     let frontRow = isMine && isFrontRowBooking(booking);
     let splitSeats = isMine && hasSplitSeats(booking);
     let clashes = isMine ? getConflictingSeats(booking) : [];
@@ -82,7 +67,7 @@ function renderBookings() {
     let matchesStatus = (statusFilter === "All" || booking.status === statusFilter);
 
     if (isMine && matchesKeyword && matchesEvent && matchesStatus && matchesFlag) {
-      // Approve and Cancel are not possible after the event
+     
       let actions = "<span class='hint'>No action</span>";
       if (isPastEvent(event) === false) {
         actions = "";
@@ -124,9 +109,7 @@ function renderBookings() {
 }
 
 
-/* =====================================================================
-   APPROVE or CANCEL a booking (changes the status property)
-   ===================================================================== */
+
 function approveBooking(index) {
   let booking = bookings[index];
   let clashes = getConflictingSeats(booking);
@@ -145,7 +128,7 @@ function approveBooking(index) {
 
 function cancelBooking(index) {
   let booking = bookings[index];
-  booking.status = "Cancelled";          // the seats become free again (see getBookedSeats in common.js)
+  booking.status = "Cancelled";          
   saveData();
 
   showMessage("bookingMessage", "Booking <strong>" + booking.id + "</strong> of " + booking.holderName +
@@ -154,8 +137,6 @@ function cancelBooking(index) {
 }
 
 
-/* =====================================================================
-   START
-   ===================================================================== */
+
 fillEventFilter();
 renderBookings();
