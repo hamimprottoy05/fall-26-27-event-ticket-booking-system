@@ -1,23 +1,4 @@
-/* =====================================================================
-   data.js  -  Sample data for the whole system
-   ---------------------------------------------------------------------
-   Every list is an ARRAY OF OBJECTS (Lecture 05: "Arrays of objects").
-   Each object groups related values as  name: value  pairs.
 
-   IMPORTANT (frontend only):
-   The Organizer pages work with several pages (events -> bookings ->
-   sales), so users, events and bookings are also kept
-   in the browser with localStorage (see saveData() in common.js and
-   loadSavedData() at the bottom of this file).
-   When the backend (PHP + MySQL) is built later, these arrays will be
-   replaced by data that comes from the database.
-   ===================================================================== */
-
-
-// ---------- Users of the system (used by Register) ----------
-//   status: "Active"  = can log in
-//           "Pending" = registered, waiting for an admin to approve (organizers)
-//   Every type of user has a few extra properties (organizers: organization, organizerType, ...)
 let users = [
   { id: "U-002", name: "Sabbir Ahmed",  username: "organizer", password: "organizer123", email: "sabbir@soundwave.com", phone: "01711000002", role: "Organizer", status: "Active",
     organization: "Sound Wave Events", organizerType: "Company", experience: 6, eventTypes: ["Concert", "Theatre"] },
@@ -35,11 +16,7 @@ let users = [
 ];
 
 
-// ---------- Events (created by organizers, seen by customers) ----------
-// The hall has "rows" rows (A, B, C ...) with "seatsPerRow" seats in each row.
-// Dates are written as "YYYY-MM-DD", the same format an <input type="date"> gives.
-//   revenueTarget (optional, Unique 2): the income goal in Tk the organizer sets on the Sales page.
-//                 0 or missing = no target set yet.
+
 let events = [
   { id: "E-100", title: "Winter Jazz Night",         category: "Concert",    date: "2026-10-25", time: "7:00 PM", venue: "Army Stadium Hall",           city: "Dhaka",      price: 800,  rows: 6, seatsPerRow: 8,  organizer: "Sound Wave Events",
     revenueTarget: 3000,
@@ -66,15 +43,7 @@ let events = [
 ];
 
 
-// ---------- Bookings made by customers (used by Booking and My Tickets) ----------
-// seats is an array like ["A1", "A2"]. A seat that appears in any booking is "booked" (red),
-// except in a Cancelled booking: its seats become free (green) again.
-//   status: "Pending"   = the customer booked, the organizer has not decided yet
-//           "Approved"  = the organizer approved it (counted in tickets sold and revenue)
-//           "Cancelled" = the organizer cancelled it
-//   checkedIn (optional, Unique 1): true after the organizer checks the guest in at the door.
-//   checkedInAt (optional): the date and time of the check-in, e.g. "2026-11-20 18:05".
-//   A booking without these properties is simply "not checked in".
+
 let bookings = [
   { id: "BK-001", customerId: "U-003", eventId: "E-101", title: "Dhaka Rock Fest 2026",   seats: ["A1", "A2"],            holderName: "Ayesha Rahman", phone: "01711000003", total: 2400, bookedOn: "2026-10-28", status: "Approved" },
   { id: "BK-002", customerId: "U-003", eventId: "E-104", title: "The Last Letter (Drama)", seats: ["C4"],                  holderName: "Ayesha Rahman", phone: "01711000003", total: 500,  bookedOn: "2026-11-01", status: "Approved" },
@@ -85,9 +54,7 @@ let bookings = [
 ];
 
 
-// ---------- Load what the customer saved earlier ----------
-// localStorage keeps text, so the arrays were written with JSON.stringify()
-// and are read back with JSON.parse().
+
 function loadSavedData() {
   let savedUsers = localStorage.getItem("eventnestOrgUsers");
   let savedEvents = localStorage.getItem("eventnestOrgEvents");
