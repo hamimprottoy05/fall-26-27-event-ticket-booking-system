@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Create an EventNest customer account">
   <title>Register | EventNest</title>
-  <link rel="stylesheet" href="css/customer.css">
+  <link rel="stylesheet" href="../css/customer.css">
   <link rel="stylesheet" href="../css/customer-register.css">
 </head>
 
@@ -15,7 +15,7 @@
   <header class="header">
     <a href="events.html" class="logo">Event<span>Nest</span></a>
     <div class="user-info">
-      <a href="login.html" class="btn btn-small btn-light">Login</a>
+      <a href="../login.html" class="btn btn-small btn-light">Login</a>
       <a href="register.html" class="btn btn-small">Register</a>
     </div>
   </header>
@@ -27,8 +27,13 @@
 
   <main class="container">
     <div class="auth-box wide">
+      <div class="type-tabs">
+        <a href="../customer/register.html" class="active">Customer</a>
+        <a href="../organizer/register.html">Organizer</a>
+        <a href="../volunteer/register.html">Volunteer</a>
+      </div>
       <div class="card">
-        <h2 class="page-title">Create your account</h2>
+        <h2 class="page-title">Create your Customer Account</h2>
         <p class="page-subtitle">Register as a customer to book seats and get digital tickets.
           Fields marked * are required.</p>
 
@@ -161,7 +166,7 @@
           </div>
         </form>
 
-        <p class="auth-switch">Already have an account? <a href="login.html">Login here</a></p>
+        <p class="auth-switch">Already have an account? <a href="../login.html">Login here</a></p>
       </div>
     </div>
   </main>

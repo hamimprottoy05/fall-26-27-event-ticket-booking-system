@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Rate the events you volunteered at on EventNest">
   <title>Feedback | EventNest</title>
-  <link rel="stylesheet" href="css/volunteer.css">
+  <link rel="stylesheet" href="../css/volunteer.css">
 </head>
 
 <body>
@@ -32,7 +32,8 @@
          FEEDBACK: submit only (no Edit, no Delete)
          ========================================================= -->
     <h2 class="page-title">Feedback</h2>
-    <p class="page-subtitle">Share your experience of the events you volunteered at. You can give one feedback for each event.</p>
+    <p class="page-subtitle">Share your experience of the events you volunteered at. You can give one feedback for each
+      event.</p>
 
     <div id="feedbackMessage" class="message"></div>
 
@@ -40,48 +41,48 @@
 
       <!-- CREATE: the submit form -->
       <div class="col">
-          <div class="card">
-            <h3>Submit Feedback</h3>
-            <form id="feedbackForm" onsubmit="return submitFeedback()">
-              <fieldset>
-                <legend>Your Feedback</legend>
-                <table class="form-table">
-                  <tr>
-                    <td><label for="feedbackEvent">Event: *</label></td>
-                    <td>
-                      <select id="feedbackEvent"></select>
-                      <span class="error" id="feedbackEventError"></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Rating: *</td>
-                    <td>
-                      <div id="stars">
-                        <button type="button" class="star-btn" title="1 star" onclick="setRating(1)">&#9733;</button>
-                        <button type="button" class="star-btn" title="2 stars" onclick="setRating(2)">&#9733;</button>
-                        <button type="button" class="star-btn" title="3 stars" onclick="setRating(3)">&#9733;</button>
-                        <button type="button" class="star-btn" title="4 stars" onclick="setRating(4)">&#9733;</button>
-                        <button type="button" class="star-btn" title="5 stars" onclick="setRating(5)">&#9733;</button>
-                      </div>
-                      <span class="error" id="ratingError"></span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><label for="feedbackComment">Comment: *</label></td>
-                    <td>
-                      <textarea id="feedbackComment" rows="4" maxlength="500" placeholder="What went well? What can be improved?"
-                        onkeyup="showCharCount()"></textarea>
-                      <span class="hint"><span id="charCount">0</span>/500 characters</span>
-                      <span class="error" id="feedbackCommentError"></span>
-                    </td>
-                  </tr>
-                </table>
-              </fieldset>
+        <div class="card">
+          <h3>Submit Feedback</h3>
+          <form id="feedbackForm" onsubmit="return submitFeedback()">
+            <fieldset>
+              <legend>Your Feedback</legend>
+              <table class="form-table">
+                <tr>
+                  <td><label for="feedbackEvent">Event: *</label></td>
+                  <td>
+                    <select id="feedbackEvent"></select>
+                    <span class="error" id="feedbackEventError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rating: *</td>
+                  <td>
+                    <div id="stars">
+                      <button type="button" class="star-btn" title="1 star" onclick="setRating(1)">&#9733;</button>
+                      <button type="button" class="star-btn" title="2 stars" onclick="setRating(2)">&#9733;</button>
+                      <button type="button" class="star-btn" title="3 stars" onclick="setRating(3)">&#9733;</button>
+                      <button type="button" class="star-btn" title="4 stars" onclick="setRating(4)">&#9733;</button>
+                      <button type="button" class="star-btn" title="5 stars" onclick="setRating(5)">&#9733;</button>
+                    </div>
+                    <span class="error" id="ratingError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="feedbackComment">Comment: *</label></td>
+                  <td>
+                    <textarea id="feedbackComment" rows="4" maxlength="500"
+                      placeholder="What went well? What can be improved?" onkeyup="showCharCount()"></textarea>
+                    <span class="hint"><span id="charCount">0</span>/500 characters</span>
+                    <span class="error" id="feedbackCommentError"></span>
+                  </td>
+                </tr>
+              </table>
+            </fieldset>
 
-              <input type="submit" class="btn" value="Submit Feedback">
-              <button type="button" class="btn btn-secondary" onclick="resetFeedbackForm()">Clear Form</button>
-            </form>
-          </div>
+            <input type="submit" class="btn" value="Submit Feedback">
+            <button type="button" class="btn btn-secondary" onclick="resetFeedbackForm()">Clear Form</button>
+          </form>
+        </div>
       </div>
 
       <!-- READ ONLY: submitted feedback (no Edit, no Delete) -->
@@ -101,9 +102,9 @@
     &copy; 2026 EventNest &middot; Event and Ticket Booking System
   </footer>
 
-  <script src="js/volunteer-data.js"></script>
-  <script src="js/volunteer-common.js"></script>
-  <script src="js/volunteer-feedback.js"></script>
+  <script src="../js/volunteer-data.js"></script>
+  <script src="../js/volunteer-common.js"></script>
+  <script src="../js/volunteer-feedback.js"></script>
 </body>
 
 </html>
