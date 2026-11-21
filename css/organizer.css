@@ -164,11 +164,7 @@ a:hover {
 }
 
 
-/* ---------------------------------------------------------------------
-   4. FORMS
-   <fieldset>, <legend> and a <table> to line up labels and fields
-   (Lecture 01: worked example - the patient registration form)
-   --------------------------------------------------------------------- */
+
 fieldset {
   border: 1px solid #D8D0E8;
   border-radius: 8px;
@@ -202,7 +198,7 @@ label {
   color: #444444;
 }
 
-/* The labels next to radio buttons and checkboxes are normal weight */
+
 .option-label {
   font-weight: normal;
   margin-right: 12px;
@@ -226,7 +222,7 @@ textarea {
   background-color: white;
 }
 
-/* :focus keeps the selected field clearly visible for keyboard users */
+
 input:focus,
 select:focus,
 textarea:focus {
@@ -244,7 +240,7 @@ input[type="checkbox"] {
   accent-color: #663399;
 }
 
-/* Red error text shown next to a field by JavaScript validation */
+
 .error {
   display: block;
   color: #C62828;
@@ -257,10 +253,7 @@ input[type="checkbox"] {
 }
 
 
-/* ---------------------------------------------------------------------
-   5. BUTTONS
-   :hover with a transition (Lecture 02: Hover effects and transitions)
-   --------------------------------------------------------------------- */
+
 .btn {
   display: inline-block;
   background-color: #663399;
