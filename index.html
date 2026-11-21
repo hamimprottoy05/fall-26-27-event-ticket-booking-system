@@ -1,1 +1,233 @@
-<h1>Event & Ticket Booking System</h1>
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EventNest: find events and book tickets online">
+  <title>Home | EventNest</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <a href="index.html" class="logo" id="siteLogo">EventNest</a>
+    <div class="user-info">
+      <a href="login.html" class="btn btn-small btn-light">Login</a>
+      <a href="register.html" class="btn btn-small">Register</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="index.html" id="nav-home" onclick="setActiveNav('home')" class="active">Home</a>
+    <a href="#events" id="nav-events" onclick="setActiveNav('events')">Browse Events</a>
+    <a href="#who" id="nav-who" onclick="setActiveNav('who')">Who It's For</a>
+    <a href="#how" id="nav-how" onclick="setActiveNav('how')">How It Works</a>
+    <a href="#refunds" id="nav-refunds" onclick="setActiveNav('refunds')">Refunds</a>
+    <a href="#contact" id="nav-contact" onclick="setActiveNav('contact')">Contact Us</a>
+  </nav>
+
+  <!-- ============ HERO with the event search ============ -->
+  <div class="hero">
+    <h1>Find your next event</h1>
+    <p id="siteTagline">Discover events. Book tickets. Enjoy the moment.</p>
+
+    <!-- Typing here filters the results below right away (onkeyup) -->
+    <div class="hero-search">
+      <input type="text" id="eventSearch" placeholder="Search by event, venue or organizer..."
+        onkeyup="renderEventList()">
+      <select id="eventCategory" onchange="renderEventList()">
+        <option value="All">All categories</option>
+        <option value="Music">Music</option>
+        <option value="Tech">Tech</option>
+        <option value="Sports">Sports</option>
+        <option value="Education">Education</option>
+        <option value="Food">Food</option>
+        <option value="Art">Art</option>
+      </select>
+    </div>
+    <p class="hero-note">No account needed to browse. <a href="#events" class="hero-link"
+        onclick="setActiveNav('events')">See the events &darr;</a></p>
+  </div>
+
+  <main class="container">
+
+    <!-- ============ WHY EVENTNEST ============ -->
+    <div class="feature-strip">
+      <div class="feature">
+        <span class="feature-icon">1</span>
+        <h3>One account</h3>
+        <p>Register once and log in from a single page, whoever you are.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">5</span>
+        <h3>Up to 5 tickets</h3>
+        <p>Book several tickets for friends and family in one go.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#8635;</span>
+        <h3>Fair refunds</h3>
+        <p>Cancel in time and get your money back by a clear policy.</p>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">&#10003;</span>
+        <h3>Easy check-in</h3>
+        <p>Show your ticket at the gate and walk in.</p>
+      </div>
+    </div>
+
+    <!-- ============ BROWSE EVENTS ============ -->
+    <section id="events" class="home-section">
+      <div class="section-heading">
+        <h2>Browse events</h2>
+        <p>Type in the search box above, or pick a category.</p>
+      </div>
+      <div class="card">
+        <p class="result-count" id="eventCount"></p>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Venue</th>
+                <th>Price</th>
+                <th>Tickets</th>
+              </tr>
+            </thead>
+            <tbody id="eventBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHO IT'S FOR ============ -->
+    <section id="who" class="home-section">
+      <div class="section-heading">
+        <h2>Who is EventNest for?</h2>
+        <p>Choose your type when you register. Everyone logs in from the same page.</p>
+      </div>
+
+      <div class="role-grid">
+        <div class="role-card customer">
+          <h3>Customer</h3>
+          <ul>
+            <li>Search and book tickets</li>
+            <li>See your bookings</li>
+            <li>Cancel and ask for a refund</li>
+          </ul>
+          <a href="register.html" class="btn btn-success">Register as Customer</a>
+        </div>
+
+        <div class="role-card organizer">
+          <h3>Organizer</h3>
+          <ul>
+            <li>Create and edit your events</li>
+            <li>Choose a revenue target</li>
+            <li>Check customers in at the gate</li>
+          </ul>
+          <a href="register.html" class="btn btn-success">Apply as Organizer</a>
+        </div>
+
+        <div class="role-card volunteer">
+          <h3>Volunteer</h3>
+          <ul>
+            <li>Help at the gate</li>
+            <li>See who has arrived</li>
+            <li>Join the events you like</li>
+          </ul>
+          <a href="register.html" class="btn btn-success">Register as Volunteer</a>
+        </div>
+
+        <div class="role-card admin">
+          <h3>Admin</h3>
+          <ul>
+            <li>Manage every account</li>
+            <li>Set the ticket and refund policy</li>
+            <li>Switch maintenance mode on or off</li>
+          </ul>
+          <a href="login.html" class="btn">Admin Login</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section id="how" class="home-section">
+      <div class="section-heading">
+        <h2>How it works</h2>
+        <p>Three simple steps.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Register</h3>
+          <p>Open <a href="register.html">Register</a>, choose Customer, Organizer or Volunteer and fill in your
+            details.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Log in</h3>
+          <p>Use the <a href="login.html">single login page</a>. Organizers can log in after an admin approves them.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Enjoy events</h3>
+          <p>Book tickets, run your own events, or manage the whole website, depending on your account.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REFUNDS ============ -->
+    <section id="refunds" class="home-section">
+      <div class="section-heading">
+        <h2>Refund policy</h2>
+        <p>Plans change. Here is what you get back if you cancel.</p>
+      </div>
+      <div class="card">
+        <ul class="read-list" id="refundList"></ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT US ============ -->
+    <section id="contact" class="home-section">
+      <div class="card">
+        <h3>Contact Us</h3>
+        <table class="contact-table">
+          <tr>
+            <td>Email:</td>
+            <td><a href="mailto:support@eventnest.com" id="contactEmail">support@eventnest.com</a></td>
+          </tr>
+          <tr>
+            <td>Phone:</td>
+            <td id="contactPhone">01711000000</td>
+          </tr>
+        </table>
+        <p class="hint">Need help with a booking or your account? Write to us and we will reply within one working day.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="cta-band">
+        <h2>Ready for your next event?</h2>
+        <p>It takes less than two minutes to create an account.</p>
+        <a href="register.html" class="btn btn-light">Create an account</a>
+        <a href="login.html" class="btn btn-secondary">I already have one</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 <span id="footerName">EventNest</span> &middot; Event &amp; Ticket Booking System
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>

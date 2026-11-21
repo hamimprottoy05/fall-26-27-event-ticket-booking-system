@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Admin dashboard of the event and ticket booking system">
+  <title>Admin Dashboard | EventNest</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <a href="index.html" class="logo" id="siteLogo">EventNest</a>
+    <div class="user-info">
+      <span class="badge admin">Admin</span>
+      <span>Welcome, Site Admin</span>
+      <a href="index.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <!-- ============ NAVIGATION: each button shows one section ============ -->
+  <nav class="topnav">
+    <button type="button" id="nav-statsSection" onclick="showSection('statsSection')">Dashboard</button>
+    <button type="button" id="nav-usersSection" onclick="showSection('usersSection')">Manage Users</button>
+    <button type="button" id="nav-policySection" onclick="showSection('policySection')">Ticket &amp; Refund
+      Policy</button>
+    <button type="button" id="nav-maintenanceSection" onclick="showSection('maintenanceSection')">Maintenance
+      Control</button>
+    <button type="button" id="nav-settingsSection" onclick="showSection('settingsSection')">Settings</button>
+  </nav>
+
+  <main class="container">
+
+
+    <div id="maintBanner" class="message"></div>
+
+    <!-- =========================================================
+         UNIQUE FEATURE 1: DASHBOARD STATISTICS
+         ========================================================= -->
+    <section id="statsSection" class="page-section">
+      <h2 class="page-title">Dashboard</h2>
+      <p class="page-subtitle">The most important numbers about users, events and tickets.</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="statUsers">0</div>
+          <div class="stat-label">Total users</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statPendingUsers">0</div>
+          <div class="stat-label">Waiting for approval</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statEvents">0</div>
+          <div class="stat-label">Events created</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statTickets">0</div>
+          <div class="stat-label">Tickets booked</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statRevenue">0</div>
+          <div class="stat-label">Ticket revenue</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statTarget">0%</div>
+          <div class="stat-label">Revenue target reached</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statMaintenance">LIVE</div>
+          <div class="stat-label">Server maintenance</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3>Users by role</h3>
+            <div id="roleChart"></div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <h3>Revenue target reached by each organizer</h3>
+            <div id="targetChart"></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn" onclick="generateReport()">Refresh report</button>
+    </section>
+
+
+    <!-- =========================================================
+         MANAGE USERS: CRUD
+         ========================================================= -->
+    <section id="usersSection" class="page-section">
+      <h2 class="page-title">Manage Users</h2>
+      <p class="page-subtitle">Create, view, edit, delete and search user accounts. New admins can only be added here;
+        customers, volunteers and organizers sign up on the registration page. New organizers wait as <em>Pending</em>
+        until you approve them.</p>
+
+      <div id="userMessage" class="message"></div>
+
+      <div class="row">
+        <!-- READ + SEARCH table (left) -->
+        <div class="col-wide">
+          <div class="card">
+            <h3>All Users</h3>
+            <div class="search-bar">
+              <input type="text" id="userSearch" placeholder="Search by name, username, email or id..."
+                onkeyup="renderUsers()">
+              <select id="userRoleFilter" onchange="renderUsers()">
+                <option value="All">All roles</option>
+                <option value="Admin">Admin</option>
+                <option value="Organizer">Organizer</option>
+                <option value="Customer">Customer</option>
+                <option value="Volunteer">Volunteer</option>
+              </select>
+              <select id="userStatusFilter" onchange="renderUsers()">
+                <option value="All">Any status</option>
+                <option value="Active">Active</option>
+                <option value="Blocked">Blocked</option>
+                <option value="Pending">Pending approval</option>
+              </select>
+            </div>
+            <p class="result-count" id="userCount"></p>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- CREATE / UPDATE form (right) -->
+        <div class="col">
+          <div class="card">
+            <h3 id="userFormTitle">Add New User</h3>
+            <form id="userForm" onsubmit="return saveUser()">
+              <fieldset>
+                <legend>User Details</legend>
+                <table class="form-table">
+                  <tr>
+                    <td><label for="userName">Full Name:</label></td>
+                    <td>
+                      <input type="text" id="userName" placeholder="e.g. Nadia Islam">
+                      <span class="error" id="userNameError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="userUsername">Username:</label></td>
+                    <td>
+                      <input type="text" id="userUsername" placeholder="At least 4 characters">
+                      <span class="error" id="userUsernameError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="userEmail">Email:</label></td>
+                    <td>
+                      <input type="email" id="userEmail" placeholder="name@eventnest.com">
+                      <span class="error" id="userEmailError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="userPassword">Password:</label></td>
+                    <td>
+                      <input type="password" id="userPassword" placeholder="At least 8 characters">
+                      <span class="error" id="userPasswordError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="userRole">Role:</label></td>
+                    <td>
+                      <select id="userRole">
+                        <option value="">-- Select Role --</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Organizer">Organizer</option>
+                        <option value="Customer">Customer</option>
+                        <option value="Volunteer">Volunteer</option>
+                      </select>
+                      <span class="error" id="userRoleError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Status:</td>
+                    <td>
+                      <input type="radio" id="statusActive" name="userStatus" value="Active" checked>
+                      <label for="statusActive" class="option-label">Active</label>
+                      <input type="radio" id="statusBlocked" name="userStatus" value="Blocked">
+                      <label for="statusBlocked" class="option-label">Blocked</label>
+                      <input type="radio" id="statusPending" name="userStatus" value="Pending">
+                      <label for="statusPending" class="option-label">Pending</label>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+              <input type="submit" id="userSaveButton" class="btn" value="Add User">
+              <button type="button" class="btn btn-secondary" onclick="resetUserForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         UNIQUE FEATURE 2: TICKET & REFUND POLICY
+         ========================================================= -->
+    <section id="policySection" class="page-section">
+      <h2 class="page-title">Ticket &amp; Refund Policy</h2>
+      <p class="page-subtitle">Set how many tickets can be booked and how much money comes back when an customer
+        cancels.</p>
+
+      <div id="policyMessage" class="message"></div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3>Change policy</h3>
+            <form onsubmit="return savePolicy()">
+              <fieldset>
+                <legend>Refund rules</legend>
+                <table class="form-table">
+                  <tr>
+                    <td><label for="polFullDays">Full refund until (days before event):</label></td>
+                    <td>
+                      <input type="number" id="polFullDays" min="1" max="60" onchange="previewPolicy()"
+                        onkeyup="previewPolicy()">
+                      <span class="error" id="polFullDaysError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="polPartialDays">Partial refund until (days before event):</label></td>
+                    <td>
+                      <input type="number" id="polPartialDays" min="0" max="30" onchange="previewPolicy()"
+                        onkeyup="previewPolicy()">
+                      <span class="error" id="polPartialDaysError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="polPartialPercent">Partial refund (% of refundable amount):</label></td>
+                    <td>
+                      <input type="number" id="polPartialPercent" min="1" max="99" onchange="previewPolicy()"
+                        onkeyup="previewPolicy()">
+                      <span class="error" id="polPartialPercentError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="polFee">Service fee, never refunded (%):</label></td>
+                    <td>
+                      <input type="number" id="polFee" min="0" max="20" onchange="previewPolicy()"
+                        onkeyup="previewPolicy()">
+                      <span class="error" id="polFeeError"></span>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+
+              <fieldset>
+                <legend>Booking rules</legend>
+                <table class="form-table">
+                  <tr>
+                    <td><label for="polMaxTickets">Max tickets per booking:</label></td>
+                    <td>
+                      <input type="number" id="polMaxTickets" min="1" max="10">
+                      <span class="error" id="polMaxTicketsError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="polCloseHours">Booking closes (hours before event):</label></td>
+                    <td>
+                      <input type="number" id="polCloseHours" min="0" max="48">
+                      <span class="error" id="polCloseHoursError"></span>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+
+              <input type="submit" class="btn" value="Save Policy">
+              <button type="button" class="btn btn-secondary" onclick="restoreDefaultPolicy()">Restore Defaults</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h3>Policy in use now</h3>
+            <table class="data-table">
+              <tbody id="currentPolicyBody"></tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Try the policy</h3>
+            <label for="polExamplePrice">Example ticket price:</label>
+            <input type="number" id="polExamplePrice" value="800" min="1" onchange="previewPolicy()"
+              onkeyup="previewPolicy()">
+            <div class="result-box">
+              <p><strong>Preview:</strong> with the values in the form,</p>
+              <div id="policyPreview"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         UNIQUE FEATURE 3: MAINTENANCE CONTROL
+         ========================================================= -->
+    <section id="maintenanceSection" class="page-section">
+      <h2 class="page-title">Maintenance Control</h2>
+      <p class="page-subtitle">Turn maintenance mode ON while you update the website. Visitors then see a message
+        instead of the website,
+        and only admins can get in.</p>
+
+      <div id="maintMessageBox" class="message"></div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3>Website switch</h3>
+            <div class="big-status" id="maintStatus"></div>
+            <p class="hint" id="maintInfo"></p>
+
+            <fieldset>
+              <legend>Message for visitors</legend>
+              <table class="form-table">
+                <tr>
+                  <td><label for="maintMessage">Message:</label></td>
+                  <td>
+                    <input type="text" id="maintMessage" onkeyup="previewMaintenance()">
+                    <span class="error" id="maintMessageError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="maintBack">We will be back at:</label></td>
+                  <td>
+                    <input type="text" id="maintBack" placeholder="e.g. 3:00 PM" onkeyup="previewMaintenance()">
+                    <span class="error" id="maintBackError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Back in:</td>
+                  <td>
+                    <button type="button" class="btn btn-small btn-secondary" onclick="setBackIn(30)">30 min</button>
+                    <button type="button" class="btn btn-small btn-secondary" onclick="setBackIn(60)">1 hour</button>
+                    <button type="button" class="btn btn-small btn-secondary" onclick="setBackIn(180)">3 hours</button>
+                  </td>
+                </tr>
+              </table>
+            </fieldset>
+
+            <button type="button" class="btn" id="maintButton" onclick="toggleMaintenance()">Turn ON
+              maintenance</button>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h3>Visitors see now</h3>
+            <div id="visitorNow"></div>
+          </div>
+          <div class="card">
+            <h3>Maintenance screen preview</h3>
+            <p class="hint">This is what visitors will see when maintenance is ON.</p>
+            <div id="maintPreview"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SETTINGS 
+         ========================================================= -->
+    <section id="settingsSection" class="page-section">
+      <h2 class="page-title">Settings</h2>
+      <p class="page-subtitle">Change the website name and contact details. The new name appears in the header and
+        footer straight away.</p>
+
+      <div id="settingsMessage" class="message"></div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3>Change settings</h3>
+            <form onsubmit="return saveSettings()">
+              <fieldset>
+                <legend>Website</legend>
+                <table class="form-table">
+                  <tr>
+                    <td><label for="setSiteName">Website name:</label></td>
+                    <td>
+                      <input type="text" id="setSiteName">
+                      <span class="error" id="setSiteNameError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="setTagline">Tagline:</label></td>
+                    <td>
+                      <input type="text" id="setTagline">
+                      <span class="error" id="setTaglineError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="setEmail">Support email:</label></td>
+                    <td>
+                      <input type="email" id="setEmail">
+                      <span class="error" id="setEmailError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="setPhone">Support phone:</label></td>
+                    <td>
+                      <input type="tel" id="setPhone" placeholder="11 digits, e.g. 01711000000">
+                      <span class="error" id="setPhoneError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="setCurrency">Currency symbol:</label></td>
+                    <td>
+                      <input type="text" id="setCurrency">
+                      <span class="error" id="setCurrencyError"></span>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+
+              <input type="submit" class="btn" value="Save Settings">
+              <button type="button" class="btn btn-secondary" onclick="restoreDefaultSettings()">Restore
+                Defaults</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h3>Settings in use now</h3>
+            <table class="data-table">
+              <tbody id="currentSettingsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 <span id="footerName">EventNest</span> &middot; Event &amp; Ticket Booking System
+  </footer>
+
+  <script src="../js/admin.js"></script>
+  <script src="../js/admincommon.js"></script>
+  <script src="../js/admindata.js"></script>
+</body>
+
+</html>
