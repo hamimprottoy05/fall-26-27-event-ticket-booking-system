@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="css/customer.css">
   <link rel="stylesheet" href="css/customer-register.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -25,6 +27,11 @@
 
   <main class="container">
     <div class="auth-box wide">
+      <div class="type-tabs">
+        <a href="../customer/register.html" class="active">Customer</a>
+        <a href="../organizer/register.html">Organizer</a>
+        <a href="../volunteer/register.html">Volunteer</a>
+      </div>
       <div class="card">
         <h2 class="page-title">Create your account</h2>
         <p class="page-subtitle">Register as a customer to book seats and get digital tickets.
@@ -131,7 +138,8 @@
               <tr>
                 <td><label for="newPassword">Password: *</label></td>
                 <td>
-                  <input type="password" id="newPassword" placeholder="At least 8 characters with a digit" onkeyup="showPasswordStrength()">
+                  <input type="password" id="newPassword" placeholder="At least 8 characters with a digit"
+                    onkeyup="showPasswordStrength()">
                   <span class="hint" id="strengthText"></span>
                   <span class="error" id="newPasswordError"></span>
                 </td>
@@ -171,4 +179,5 @@
   <script src="js/customer-common.js"></script>
   <script src="js/customer-register.js"></script>
 </body>
+
 </html>
