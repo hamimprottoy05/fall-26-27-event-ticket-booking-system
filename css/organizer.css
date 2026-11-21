@@ -1,25 +1,4 @@
-/* =====================================================================
-   EventNest Event and Ticket Booking System  -  organizer.css
-   ---------------------------------------------------------------------
-   Main external style sheet, linked from the <head> of every page
-   (register.html also links organizer-register.css)
-   (Lecture 02: "Inserting CSS - External CSS is recommended").
-   This file contains only CSS, no HTML tags.
 
-   Sections in this file:
-     1. Reset and page defaults       6. Tables
-     2. Header and navigation bar     7. Badges and messages
-     3. Layout (container, cards)     8. Stat tiles and progress bars
-     4. Forms                         9. Home, login and register pages
-     5. Buttons                      10. Footer
-   ===================================================================== */
-
-
-/* ---------------------------------------------------------------------
-   1. RESET AND PAGE DEFAULTS
-   Universal selector reset (Lecture 02: "* { margin: 0; }")
-   box-sizing: border-box makes width include padding and border
-   --------------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
