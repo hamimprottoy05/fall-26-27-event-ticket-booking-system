@@ -1,11 +1,4 @@
-/* =====================================================================
-   EventNest Event and Ticket Booking System  -  organizer-register.css
-   ---------------------------------------------------------------------
-   Styles used only by the registration page (register.html).
-   It is linked AFTER organizer.css in register.html.
-   ===================================================================== */
 
-/* The login and register boxes: centred, never wider than the screen */
 .auth-box {
   max-width: 480px;
   margin: 40px auto;
@@ -16,17 +9,13 @@
 }
 
 
-/* =====================================================================
-   REGISTRATION PAGE: choose a type of user, then see its fields
-   ===================================================================== */
 
-/* Hidden until the user picks a type; register.js sets style.display */
 .form-body,
 .type-fields {
   display: none;
 }
 
-/* Three big clickable cards for Student / Librarian / Visitor */
+
 .type-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -58,7 +47,7 @@
   margin-top: 4px;
 }
 
-/* Added by JavaScript to the chosen card */
+
 .type-option.selected {
   border-color: #663399;
   background-color: #F3ECFC;
