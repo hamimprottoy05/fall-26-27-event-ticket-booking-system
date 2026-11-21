@@ -226,16 +226,16 @@ function saveEvent() {
     return false;
   }
 
-  // ----- Save -----
+ 
   if (editEventIndex === -1) {
-    // CREATE
+    
     let newEvent = { id: nextId("E", events), title: title, category: category, date: date, time: toAmPm(time),
                      venue: venue, city: city, price: price, rows: rowCount, seatsPerRow: seatsPerRow,
                      organizer: currentOrganization, description: description };
     events.push(newEvent);
     showMessage("eventMessage", "<strong>" + title + "</strong> was created with id " + newEvent.id + ".", "success");
   } else {
-    // UPDATE
+    
     let event = events[editEventIndex];
     event.title = title;
     event.category = category;
