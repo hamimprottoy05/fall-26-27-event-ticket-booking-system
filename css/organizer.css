@@ -786,12 +786,12 @@ input[type="checkbox"] {
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: relative;          /* the number is placed inside this box */
+  position: relative;         
   padding-top: 34px;
 }
 
 .step-number {
-  position: absolute;          /* placed relative to .step */
+  position: absolute;          
   top: -16px;
   left: 20px;
   width: 36px;
@@ -804,7 +804,7 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
-/* Call-to-action band near the bottom of the home page */
+
 .cta-band {
   background-color: #663399;
   color: white;
