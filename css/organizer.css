@@ -921,7 +921,7 @@ input[type="checkbox"] {
   color: #663399;
 }
 
-/* Heart button for favourite events */
+
 .heart-btn {
   background-color: white;
   border: none;
@@ -955,10 +955,7 @@ input[type="checkbox"] {
 }
 
 
-/* =====================================================================
-   SEAT SELECTION (booking.html)
-   Available = green, booked = red, selected = blue
-   ===================================================================== */
+
 .stage {
   background-color: #1B1F3B;
   color: white;
@@ -1036,9 +1033,7 @@ input[type="checkbox"] {
 .legend-box.selected  { background-color: #1565C0; }
 
 
-/* =====================================================================
-   DIGITAL TICKET (my-tickets.html)
-   ===================================================================== */
+
 .ticket {
   display: flex;
   flex-wrap: wrap;
