@@ -1,27 +1,14 @@
-/* =====================================================================
-   events.js  -  Everything an Organizer does with events
-   (events.html)
-   ---------------------------------------------------------------------
-   CRUD + Search : My Events (events array, only this organizer's events)
-   Unique 1      : Create & Manage Events (create, edit and delete my events)
-   ===================================================================== */
 
-// The organizer who is logged in. With the PHP backend this will come
-// from the session ($_SESSION) instead of being written here.
 const currentOrganizerId = "U-002";
 const currentOrganization = getOrganizationName(currentOrganizerId);
 
-let editEventIndex = -1;          // -1 = creating, otherwise the index being edited
+let editEventIndex = -1;          
 
 const eventFields = ["eventTitle", "eventCategory", "eventDate", "eventTime", "eventVenue",
                      "eventCity", "eventPrice", "eventRows", "eventSeatsPerRow", "eventDescription"];
 
 
-/* =====================================================================
-   HELPERS FOR THIS PAGE
-   ===================================================================== */
 
-// "19:00" (from <input type="time">) -> "7:00 PM"
 function toAmPm(time24) {
   let hours = Number(time24.slice(0, 2));
   let minutes = time24.slice(3, 5);
@@ -34,7 +21,7 @@ function toAmPm(time24) {
   return hours + ":" + minutes + " " + suffix;
 }
 
-// "7:00 PM" -> "19:00" (to put an old time back into the form)
+
 function to24Hour(timeText) {
   let parts = timeText.split(" ");
   let clock = parts[0].split(":");
@@ -52,15 +39,14 @@ function to24Hour(timeText) {
   return hours + ":" + clock[1];
 }
 
-// true if a booked seat (like "C4") would be outside a hall with
-// "rows" rows and "seatsPerRow" seats in each row
+
 function seatOutsideLayout(seatId, rows, seatsPerRow) {
   let rowNumber = "ABCDEFGHIJ".indexOf(seatId.charAt(0));    // "C" -> 2
   let seatNumber = Number(seatId.slice(1));                  // "C4" -> 4
   return rowNumber >= rows || seatNumber > seatsPerRow;
 }
 
-// true if this organizer already has another event with this title on this date
+
 function eventUsedByOther(title, date) {
   for (let i = 0; i < events.length; i++) {
     if (i !== editEventIndex && events[i].organizer === currentOrganization &&
@@ -71,7 +57,7 @@ function eventUsedByOther(title, date) {
   return false;
 }
 
-// Live character counter for the description box (onkeyup event)
+
 function countDescriptionCharacters() {
   let length = document.getElementById("eventDescription").value.length;
   let counter = document.getElementById("descriptionCounter");
@@ -80,9 +66,7 @@ function countDescriptionCharacters() {
 }
 
 
-/* =====================================================================
-   READ + SEARCH (only this organizer's events)
-   ===================================================================== */
+
 function renderEvents() {
   let keyword = document.getElementById("eventSearch").value;
   let category = document.getElementById("eventCategoryFilter").value;
@@ -94,7 +78,7 @@ function renderEvents() {
 
   for (let i = 0; i < events.length; i++) {
     let event = events[i];
-    let isMine = (event.organizer === currentOrganization);   // only this organizer's events
+    let isMine = (event.organizer === currentOrganization);   
     if (isMine) {
       mine++;
     }
@@ -108,13 +92,13 @@ function renderEvents() {
                         (status === "Finished" && finished === true);
 
     if (isMine && matchesKeyword && matchesCategory && matchesStatus) {
-      // Grey when the event is over, green otherwise
+      
       let seatColor = "green";
       if (finished) {
         seatColor = "grey";
       }
 
-      // Only upcoming events can be edited
+      
       let actions = "<button type='button' class='btn btn-small btn-danger' onclick='deleteEvent(" + i + ")'>Delete</button>";
       if (finished === false) {
         actions = "<button type='button' class='btn btn-small' onclick='editEvent(" + i + ")'>Edit</button>" + actions;
@@ -143,9 +127,7 @@ function renderEvents() {
 }
 
 
-/* =====================================================================
-   CREATE or UPDATE
-   ===================================================================== */
+
 function saveEvent() {
   let title = document.getElementById("eventTitle").value.trim();
   let category = document.getElementById("eventCategory").value;
@@ -162,7 +144,7 @@ function saveEvent() {
   let rowCount = Number(rowsText);
   let seatsPerRow = Number(seatsText);
 
-  // ----- Validation -----
+  
   let isValid = true;
   clearErrors(eventFields);
 
@@ -220,7 +202,7 @@ function saveEvent() {
     isValid = false;
   }
 
-  // When editing: the seats that are already booked must still fit in the hall
+  
   if (isValid && editEventIndex !== -1) {
     let bookedSeats = getBookedSeats(events[editEventIndex].id);
     for (const seatId of bookedSeats) {
@@ -266,7 +248,7 @@ function saveEvent() {
     event.seatsPerRow = seatsPerRow;
     event.description = description;
 
-    // The bookings keep a copy of the title, so change it there too
+    
     for (const booking of getEventBookings(event.id)) {
       booking.title = title;
     }
@@ -280,7 +262,7 @@ function saveEvent() {
 }
 
 
-// UPDATE step 1: put the event's values into the form
+
 function editEvent(index) {
   let event = events[index];
   editEventIndex = index;
@@ -303,7 +285,7 @@ function editEvent(index) {
 }
 
 
-// DELETE: only allowed when nobody has booked a seat
+
 function deleteEvent(index) {
   let event = events[index];
 
@@ -334,10 +316,7 @@ function resetEventForm() {
 }
 
 
-/* =====================================================================
-   START
-   The home page search sends  events.html?search=...&category=...
-   ===================================================================== */
+
 let startSearch = getQueryValue("search");
 let startCategory = getQueryValue("category");
 if (startSearch !== "") {
@@ -347,5 +326,5 @@ if (startCategory !== "") {
   document.getElementById("eventCategoryFilter").value = startCategory;
 }
 
-document.getElementById("eventsSection").style.display = "block";   // .page-section is hidden in the CSS
+document.getElementById("eventsSection").style.display = "block";   
 renderEvents();
