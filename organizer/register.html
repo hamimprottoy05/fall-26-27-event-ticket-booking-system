@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create an EventNest organizer account">
+  <title>Organizer Register | EventNest</title>
+  <link rel="stylesheet" href="css/organizer.css">
+  <link rel="stylesheet" href="css/organizer-register.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <a href="login.html" class="btn btn-small btn-light">Login</a>
+      <a href="register.html" class="btn btn-small">Register</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="events.html">My Events</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="checkin.html">Check-in</a>
+    <a href="sales.html">Sales</a>
+  </nav>
+
+  <main class="container">
+    <div class="auth-box wide">
+      <div class="card">
+        <h2 class="page-title">Create your organizer account</h2>
+        <p class="page-subtitle">Register as an organizer to create events and see who booked them.
+          Fields marked * are required.</p>
+
+        <div id="registerMessage" class="message"></div>
+
+        <form id="registerForm" action="events.html" method="get" onsubmit="return validateRegister()">
+
+          <!-- ================= STEP 1: PERSONAL INFORMATION ================= -->
+          <fieldset>
+            <legend>Step 1 &middot; Personal information</legend>
+            <table class="form-table">
+              <tr>
+                <td><label for="fullName">Full Name: *</label></td>
+                <td>
+                  <input type="text" id="fullName" name="fullName" placeholder="Your full name">
+                  <span class="error" id="fullNameError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="email">Email: *</label></td>
+                <td>
+                  <input type="email" id="email" name="email" placeholder="you@example.com">
+                  <span class="error" id="emailError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="phone">Phone: *</label></td>
+                <td>
+                  <input type="tel" id="phone" name="phone" placeholder="11 digits, e.g. 01712345678">
+                  <span class="error" id="phoneError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>Gender: *</td>
+                <td>
+                  <input type="radio" id="genderMale" name="gender" value="Male">
+                  <label for="genderMale" class="option-label">Male</label>
+                  <input type="radio" id="genderFemale" name="gender" value="Female">
+                  <label for="genderFemale" class="option-label">Female</label>
+                  <input type="radio" id="genderOther" name="gender" value="Other">
+                  <label for="genderOther" class="option-label">Prefer not to say</label>
+                  <span class="error" id="genderError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="dob">Date of Birth: *</label></td>
+                <td>
+                  <input type="date" id="dob" name="dob">
+                  <span class="error" id="dobError"></span>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <!-- ================= STEP 2: ORGANIZER DETAILS ================= -->
+          <fieldset>
+            <legend>Step 2 &middot; Organizer details</legend>
+            <table class="form-table">
+              <tr>
+                <td><label for="organization">Organization name: *</label></td>
+                <td>
+                  <input type="text" id="organization" name="organization" placeholder="Company, club or your own name">
+                  <span class="error" id="organizationError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="organizerType">Organizer type: *</label></td>
+                <td>
+                  <select id="organizerType" name="organizerType">
+                    <option value="">-- Select Type --</option>
+                    <option value="Company">Company</option>
+                    <option value="Club">Club / Community</option>
+                    <option value="Institution">School / University</option>
+                    <option value="Individual">Individual</option>
+                  </select>
+                  <span class="error" id="organizerTypeError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="experience">Experience (years): *</label></td>
+                <td>
+                  <input type="number" id="experience" name="experience" min="0" max="40" placeholder="0 - 40">
+                  <span class="error" id="experienceError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td>Events I organize:</td>
+                <td>
+                  <input type="checkbox" id="typeConcert" name="eventType" value="Concert">
+                  <label for="typeConcert" class="option-label">Concert</label>
+                  <input type="checkbox" id="typeConference" name="eventType" value="Conference">
+                  <label for="typeConference" class="option-label">Conference</label>
+                  <input type="checkbox" id="typeSports" name="eventType" value="Sports">
+                  <label for="typeSports" class="option-label">Sports</label>
+                  <input type="checkbox" id="typeTheatre" name="eventType" value="Theatre">
+                  <label for="typeTheatre" class="option-label">Theatre</label>
+                  <input type="checkbox" id="typeWorkshop" name="eventType" value="Workshop">
+                  <label for="typeWorkshop" class="option-label">Workshop</label>
+                </td>
+              </tr>
+            </table>
+            <p class="hint">Organizer accounts are checked by an admin. You can log in after approval.</p>
+          </fieldset>
+
+          <!-- ================= STEP 3: ACCOUNT ================= -->
+          <fieldset>
+            <legend>Step 3 &middot; Login details</legend>
+            <table class="form-table">
+              <tr>
+                <td><label for="newUsername">Username: *</label></td>
+                <td>
+                  <input type="text" id="newUsername" name="newUsername" placeholder="At least 4 characters, no spaces">
+                  <span class="error" id="newUsernameError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="newPassword">Password: *</label></td>
+                <td>
+                  <input type="password" id="newPassword" placeholder="At least 8 characters with a digit" onkeyup="showPasswordStrength()">
+                  <span class="hint" id="strengthText"></span>
+                  <span class="error" id="newPasswordError"></span>
+                </td>
+              </tr>
+              <tr>
+                <td><label for="confirmPassword">Confirm Password: *</label></td>
+                <td>
+                  <input type="password" id="confirmPassword" placeholder="Type the password again">
+                  <span class="error" id="confirmPasswordError"></span>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+
+          <!-- DHTML example from Lecture 01: the button stays disabled until the box is ticked -->
+          <p>
+            <input type="checkbox" id="terms" name="terms" onchange="toggleRegisterButton()">
+            <label for="terms" class="option-label">I agree to the organizer rules and terms *</label>
+          </p>
+
+          <div class="form-buttons">
+            <input type="submit" id="registerButton" class="btn" value="Create Organizer Account" disabled>
+            <input type="reset" class="btn btn-secondary" value="Start Again" onclick="resetRegisterForm()">
+          </div>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Login here</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>
