@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Tickets sold and revenue of your events on EventNest">
   <title>Sales | EventNest Organizer</title>
-  <link rel="stylesheet" href="css/organizer.css">
-  <link rel="stylesheet" href="css/organizer-register.css">
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -33,14 +35,24 @@
          the Approved revenue is to it.
          ========================================================= -->
     <h2 class="page-title">Ticket Sales &amp; Revenue</h2>
-    <p class="page-subtitle">How many tickets you sold and how much money you earned. Only approved bookings are counted. Set an income target for each event and follow your progress.</p>
+    <p class="page-subtitle">How many tickets you sold and how much money you earned. Only approved bookings are
+      counted. Set an income target for each event and follow your progress.</p>
 
     <div id="targetMessage" class="message"></div>
 
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-number" id="statEvents">0</div><div class="stat-label">My events</div></div>
-      <div class="stat-card"><div class="stat-number" id="statTickets">0</div><div class="stat-label">Total tickets sold</div></div>
-      <div class="stat-card"><div class="stat-number" id="statRevenue">0</div><div class="stat-label">Total revenue (Tk)</div></div>
+      <div class="stat-card">
+        <div class="stat-number" id="statEvents">0</div>
+        <div class="stat-label">My events</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statTickets">0</div>
+        <div class="stat-label">Total tickets sold</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statRevenue">0</div>
+        <div class="stat-label">Total revenue (Tk)</div>
+      </div>
     </div>
 
     <div class="card">
@@ -73,7 +85,8 @@
     <div class="card">
       <h3>Revenue target progress</h3>
       <div id="targetProgressList"></div>
-      <p class="hint">The bar shows approved revenue compared with your target. It turns green when the target is reached.</p>
+      <p class="hint">The bar shows approved revenue compared with your target. It turns green when the target is
+        reached.</p>
     </div>
 
     <div class="card">
@@ -82,8 +95,12 @@
         <table class="data-table">
           <thead>
             <tr>
-              <th>Event</th><th>Date</th><th>Price</th><th>Tickets sold</th>
-              <th>Seats filled</th><th>Revenue</th>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Price</th>
+              <th>Tickets sold</th>
+              <th>Seats filled</th>
+              <th>Revenue</th>
             </tr>
           </thead>
           <tbody id="salesTableBody"></tbody>
@@ -98,8 +115,9 @@
     &copy; 2026 EventNest &middot; Event and Ticket Booking System
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/sales.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/sales.js"></script>
 </body>
+
 </html>

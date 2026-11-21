@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Door check-in mode for organizers on EventNest">
   <title>Door Check-in | EventNest Organizer</title>
-  <link rel="stylesheet" href="css/organizer.css">
-  <link rel="stylesheet" href="css/organizer-register.css">
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -33,7 +35,8 @@
          the guest becomes "Checked In" and a live counter shows how many came.
          ========================================================= -->
     <h2 class="page-title">Door Check-in</h2>
-    <p class="page-subtitle">On the event day, type the booking id of each guest to mark them as Checked In. Only approved bookings can enter.</p>
+    <p class="page-subtitle">On the event day, type the booking id of each guest to mark them as Checked In. Only
+      approved bookings can enter.</p>
 
     <div id="checkinMessage" class="message"></div>
 
@@ -50,14 +53,25 @@
 
       <!-- Live counter -->
       <div class="stats-grid">
-        <div class="stat-card"><div class="stat-number" id="statChecked">0</div><div class="stat-label">Guests checked in</div></div>
-        <div class="stat-card"><div class="stat-number" id="statExpected">0</div><div class="stat-label">Guests expected (approved seats)</div></div>
-        <div class="stat-card"><div class="stat-number" id="statWaiting">0</div><div class="stat-label">Still to arrive</div></div>
+        <div class="stat-card">
+          <div class="stat-number" id="statChecked">0</div>
+          <div class="stat-label">Guests checked in</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statExpected">0</div>
+          <div class="stat-label">Guests expected (approved seats)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statWaiting">0</div>
+          <div class="stat-label">Still to arrive</div>
+        </div>
       </div>
 
       <div class="card">
         <h3>Live attendance</h3>
-        <div class="progress-track"><div class="progress-fill" id="checkinBar"></div></div>
+        <div class="progress-track">
+          <div class="progress-fill" id="checkinBar"></div>
+        </div>
         <p class="hint" id="checkinBarText"></p>
       </div>
 
@@ -84,12 +98,19 @@
         <div class="table-wrapper">
           <table class="data-table">
             <thead>
-              <tr><th>Booking</th><th>Ticket holder</th><th>Seat(s)</th><th>Entry</th><th>Action</th></tr>
+              <tr>
+                <th>Booking</th>
+                <th>Ticket holder</th>
+                <th>Seat(s)</th>
+                <th>Entry</th>
+                <th>Action</th>
+              </tr>
             </thead>
             <tbody id="checkinTableBody"></tbody>
           </table>
         </div>
-        <p class="hint">Pending and Cancelled bookings are not allowed in. Use Undo if a guest was checked in by mistake.</p>
+        <p class="hint">Pending and Cancelled bookings are not allowed in. Use Undo if a guest was checked in by
+          mistake.</p>
       </div>
 
     </div>
@@ -100,8 +121,9 @@
     &copy; 2026 EventNest &middot; Event and Ticket Booking System
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/checkin.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/checkin.js"></script>
 </body>
+
 </html>

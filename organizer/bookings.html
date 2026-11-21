@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="See the bookings of your events on EventNest">
   <title>Bookings | EventNest Organizer</title>
-  <link rel="stylesheet" href="css/organizer.css">
-  <link rel="stylesheet" href="css/organizer-register.css">
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -35,19 +37,30 @@
            3. "Seat Clash" (two active bookings claiming the same seat)
          ========================================================= -->
     <h2 class="page-title">Attendees &amp; Bookings</h2>
-    <p class="page-subtitle">Everyone who booked your events. Search by name or booking id, then approve or cancel a booking. Seating priority and seat clashes are flagged automatically.</p>
+    <p class="page-subtitle">Everyone who booked your events. Search by name or booking id, then approve or cancel a
+      booking. Seating priority and seat clashes are flagged automatically.</p>
 
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-number" id="statFrontRow">0</div><div class="stat-label">Front-row (Row A) bookings</div></div>
-      <div class="stat-card"><div class="stat-number" id="statSplitSeats">0</div><div class="stat-label">Split-seat bookings</div></div>
-      <div class="stat-card"><div class="stat-number" id="statSeatClash">0</div><div class="stat-label">Seat clash alerts</div></div>
+      <div class="stat-card">
+        <div class="stat-number" id="statFrontRow">0</div>
+        <div class="stat-label">Front-row (Row A) bookings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statSplitSeats">0</div>
+        <div class="stat-label">Split-seat bookings</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statSeatClash">0</div>
+        <div class="stat-label">Seat clash alerts</div>
+      </div>
     </div>
 
     <div id="bookingMessage" class="message"></div>
 
     <div class="card">
       <div class="search-bar">
-        <input type="text" id="bookingSearch" placeholder="Search by name, booking id, event or seat..." onkeyup="renderBookings()">
+        <input type="text" id="bookingSearch" placeholder="Search by name, booking id, event or seat..."
+          onkeyup="renderBookings()">
         <select id="bookingEventFilter" onchange="renderBookings()">
           <option value="All">All my events</option>
         </select>
@@ -68,13 +81,26 @@
       <div class="table-wrapper">
         <table class="data-table">
           <thead>
-            <tr><th>Booking</th><th>Event</th><th>Ticket holder</th><th>Seat(s)</th><th>Total</th><th>Booked on</th><th>Seat Flag</th><th>Status</th><th>Actions</th></tr>
+            <tr>
+              <th>Booking</th>
+              <th>Event</th>
+              <th>Ticket holder</th>
+              <th>Seat(s)</th>
+              <th>Total</th>
+              <th>Booked on</th>
+              <th>Seat Flag</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
           </thead>
           <tbody id="bookingTableBody"></tbody>
         </table>
       </div>
-      <p class="hint">A Pending booking can be approved or cancelled. An approved booking can be cancelled. When a booking is cancelled its seats become free again. Bookings of finished events cannot be changed.</p>
-      <p class="hint"><span class="badge blue">Front Row</span> = includes Row A seat(s). <span class="badge orange">Split Seats</span> = multiple seats are not side-by-side. <span class="badge red">Seat Clash</span> = same seat overlaps with another active booking (cancel one to resolve).</p>
+      <p class="hint">A Pending booking can be approved or cancelled. An approved booking can be cancelled. When a
+        booking is cancelled its seats become free again. Bookings of finished events cannot be changed.</p>
+      <p class="hint"><span class="badge blue">Front Row</span> = includes Row A seat(s). <span
+          class="badge orange">Split Seats</span> = multiple seats are not side-by-side. <span class="badge red">Seat
+          Clash</span> = same seat overlaps with another active booking (cancel one to resolve).</p>
     </div>
 
   </main>
@@ -83,8 +109,9 @@
     &copy; 2026 EventNest &middot; Event and Ticket Booking System
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/bookings.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/bookings.js"></script>
 </body>
+
 </html>

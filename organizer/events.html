@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Create and manage your events on EventNest">
-  <title>My Events | EventNest</title>
-  <link rel="stylesheet" href="css/organizer.css">
-  <link rel="stylesheet" href="css/organizer-register.css">
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -125,7 +126,8 @@
                   <tr>
                     <td><label for="eventDescription">Description:</label></td>
                     <td>
-                      <textarea id="eventDescription" rows="4" cols="30" placeholder="What is this event about?" onkeyup="countDescriptionCharacters()"></textarea>
+                      <textarea id="eventDescription" rows="4" cols="30" placeholder="What is this event about?"
+                        onkeyup="countDescriptionCharacters()"></textarea>
                       <span class="hint" id="descriptionCounter">0 / 200</span>
                       <span class="error" id="eventDescriptionError"></span>
                     </td>
@@ -142,7 +144,8 @@
           <div class="card">
             <h3>My Event List</h3>
             <div class="search-bar">
-              <input type="text" id="eventSearch" placeholder="Search by title, venue, city or id..." onkeyup="renderEvents()">
+              <input type="text" id="eventSearch" placeholder="Search by title, venue, city or id..."
+                onkeyup="renderEvents()">
               <select id="eventCategoryFilter" onchange="renderEvents()">
                 <option value="All">All categories</option>
                 <option value="Concert">Concert</option>
@@ -162,8 +165,13 @@
               <table class="data-table">
                 <thead>
                   <tr>
-                    <th>ID</th><th>Event</th><th>Date / Time</th><th>Venue</th>
-                    <th>Price</th><th>Capacity</th><th>Actions</th>
+                    <th>ID</th>
+                    <th>Event</th>
+                    <th>Date / Time</th>
+                    <th>Venue</th>
+                    <th>Price</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody id="eventTableBody"></tbody>
@@ -181,8 +189,9 @@
     &copy; 2026 EventNest &middot; Event and Ticket Booking System
   </footer>
 
-  <script src="js/data.js"></script>
-  <script src="js/common.js"></script>
-  <script src="js/events.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/events.js"></script>
 </body>
+
 </html>
