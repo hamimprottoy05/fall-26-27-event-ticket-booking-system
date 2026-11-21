@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and manage your events on EventNest">
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge blue">Organizer</span>
+      <a href="register.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="events.html" class="active">My Events</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="checkin.html">Check-in</a>
+    <a href="sales.html">Sales</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- 
+        Create, Read, Update, Delete and Search
+         UNIQUE FEATURE 1: CREATE & MANAGE EVENTS
+          -->
+    <section id="eventsSection" class="page-section">
+      <h2 class="page-title">My Events</h2>
+      <p class="page-subtitle">Create new events, edit their details, remove them, and search your events.</p>
+
+      <div id="eventMessage" class="message"></div>
+
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <h3 id="eventFormTitle">Create New Event</h3>
+            <form id="eventForm" novalidate onsubmit="return saveEvent()">
+              <fieldset>
+                <legend>Event Details</legend>
+                <table class="form-table">
+                  <tr>
+                    <td><label for="eventTitle">Title:</label></td>
+                    <td>
+                      <input type="text" id="eventTitle" placeholder="Event title">
+                      <span class="error" id="eventTitleError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventCategory">Category:</label></td>
+                    <td>
+                      <select id="eventCategory">
+                        <option value="">-- Select Category --</option>
+                        <option value="Concert">Concert</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Theatre">Theatre</option>
+                        <option value="Workshop">Workshop</option>
+                      </select>
+                      <span class="error" id="eventCategoryError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventDate">Date:</label></td>
+                    <td>
+                      <input type="date" id="eventDate">
+                      <span class="error" id="eventDateError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventTime">Time:</label></td>
+                    <td>
+                      <input type="time" id="eventTime">
+                      <span class="error" id="eventTimeError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventVenue">Venue:</label></td>
+                    <td>
+                      <input type="text" id="eventVenue" placeholder="Hall or stadium name">
+                      <span class="error" id="eventVenueError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventCity">City:</label></td>
+                    <td>
+                      <select id="eventCity">
+                        <option value="">-- Select City --</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Chattogram">Chattogram</option>
+                        <option value="Sylhet">Sylhet</option>
+                        <option value="Rajshahi">Rajshahi</option>
+                        <option value="Khulna">Khulna</option>
+                      </select>
+                      <span class="error" id="eventCityError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventPrice">Price (Tk):</label></td>
+                    <td>
+                      <input type="number" id="eventPrice" min="50" max="10000" placeholder="50 - 10000">
+                      <span class="error" id="eventPriceError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventRows">Rows:</label></td>
+                    <td>
+                      <input type="number" id="eventRows" min="1" max="10" placeholder="1 - 10">
+                      <span class="error" id="eventRowsError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventSeatsPerRow">Seats per row:</label></td>
+                    <td>
+                      <input type="number" id="eventSeatsPerRow" min="1" max="20" placeholder="1 - 20">
+                      <span class="error" id="eventSeatsPerRowError"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="eventDescription">Description:</label></td>
+                    <td>
+                      <textarea id="eventDescription" rows="4" cols="30" placeholder="What is this event about?"
+                        onkeyup="countDescriptionCharacters()"></textarea>
+                      <span class="hint" id="descriptionCounter">0 / 200</span>
+                      <span class="error" id="eventDescriptionError"></span>
+                    </td>
+                  </tr>
+                </table>
+              </fieldset>
+              <input type="submit" id="eventSaveButton" class="btn" value="Create Event">
+              <button type="button" class="btn btn-secondary" onclick="resetEventForm()">Cancel</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-wide">
+          <div class="card">
+            <h3>My Event List</h3>
+            <div class="search-bar">
+              <input type="text" id="eventSearch" placeholder="Search by title, venue, city or id..."
+                onkeyup="renderEvents()">
+              <select id="eventCategoryFilter" onchange="renderEvents()">
+                <option value="All">All categories</option>
+                <option value="Concert">Concert</option>
+                <option value="Conference">Conference</option>
+                <option value="Sports">Sports</option>
+                <option value="Theatre">Theatre</option>
+                <option value="Workshop">Workshop</option>
+              </select>
+              <select id="eventStatusFilter" onchange="renderEvents()">
+                <option value="All">Any status</option>
+                <option value="Upcoming">Upcoming</option>
+                <option value="Finished">Finished</option>
+              </select>
+            </div>
+            <p class="result-count" id="eventCount"></p>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Event</th>
+                    <th>Date / Time</th>
+                    <th>Venue</th>
+                    <th>Price</th>
+                    <th>Capacity</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="eventTableBody"></tbody>
+              </table>
+            </div>
+            <p class="hint">Only upcoming events can be edited. An event that has bookings cannot be deleted.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/events.js"></script>
+</body>
+
+</html>

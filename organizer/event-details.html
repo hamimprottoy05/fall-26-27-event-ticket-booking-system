@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Details and bookings of one event on EventNest">
+  <title>Event Details | EventNest Organizer</title>
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge blue">Organizer</span>
+      <a href="register.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="events.html">My Events</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="checkin.html">Check-in</a>
+    <a href="sales.html">Sales</a>
+  </nav>
+
+  <main class="container">
+
+    <div id="detailMessage" class="message"></div>
+
+    <section id="detailSection" class="page-section">
+      <p><a href="events.html">&larr; Back to my events</a></p>
+
+      <div class="row">
+        <div class="col-wide">
+          <div class="card">
+            <span class="badge blue" id="detailCategory"></span>
+            <h2 class="page-title" id="detailTitle"></h2>
+            <p class="page-subtitle" id="detailDescription"></p>
+
+            <table class="detail-grid">
+              <tr>
+                <td>Event id:</td>
+                <td id="detailId"></td>
+              </tr>
+              <tr>
+                <td>Date:</td>
+                <td id="detailDate"></td>
+              </tr>
+              <tr>
+                <td>Time:</td>
+                <td id="detailTime"></td>
+              </tr>
+              <tr>
+                <td>Venue:</td>
+                <td id="detailVenue"></td>
+              </tr>
+              <tr>
+                <td>Hall layout:</td>
+                <td id="detailLayout"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card">
+            <h3>Ticket</h3>
+            <div class="result-box">
+              <p>Price per seat</p>
+              <p><span class="big" id="detailPrice"></span></p>
+              <p id="detailSeats"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/event-details.js"></script>
+</body>
+
+</html>

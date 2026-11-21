@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Door check-in mode for organizers on EventNest">
+  <title>Door Check-in | EventNest Organizer</title>
+  <link rel="stylesheet" href="../css/organizer.css">
+  <link rel="stylesheet" href="../css/organizer-register.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="events.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge blue">Organizer</span>
+      <a href="register.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="events.html">My Events</a>
+    <a href="bookings.html">Bookings</a>
+    <a href="checkin.html" class="active">Check-in</a>
+    <a href="sales.html">Sales</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- =========================================================
+         UNIQUE FEATURE 1: DOOR CHECK-IN MODE
+         On the event day the organizer types the booking id at the door,
+         the guest becomes "Checked In" and a live counter shows how many came.
+         ========================================================= -->
+    <h2 class="page-title">Door Check-in</h2>
+    <p class="page-subtitle">On the event day, type the booking id of each guest to mark them as Checked In. Only
+      approved bookings can enter.</p>
+
+    <div id="checkinMessage" class="message"></div>
+
+    <div class="card">
+      <h3>1. Choose the event</h3>
+      <select id="checkinEvent" onchange="renderCheckin()">
+        <option value="">-- Select your event --</option>
+      </select>
+      <span class="error" id="checkinEventError"></span>
+      <p class="hint" id="checkinEventNote"></p>
+    </div>
+
+    <div id="checkinArea" class="checkin-area">
+
+      <!-- Live counter -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" id="statChecked">0</div>
+          <div class="stat-label">Guests checked in</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statExpected">0</div>
+          <div class="stat-label">Guests expected (approved seats)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="statWaiting">0</div>
+          <div class="stat-label">Still to arrive</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Live attendance</h3>
+        <div class="progress-track">
+          <div class="progress-fill" id="checkinBar"></div>
+        </div>
+        <p class="hint" id="checkinBarText"></p>
+      </div>
+
+      <!-- The check-in form -->
+      <div class="card">
+        <h3>2. Check a guest in</h3>
+        <form id="checkinForm" novalidate onsubmit="return checkInGuest()">
+          <table class="form-table">
+            <tr>
+              <td><label for="checkinBookingId">Booking ID:</label></td>
+              <td>
+                <input type="text" id="checkinBookingId" placeholder="e.g. BK-001" autocomplete="off">
+                <span class="error" id="checkinBookingIdError"></span>
+              </td>
+            </tr>
+          </table>
+          <input type="submit" class="btn btn-success" value="Check In">
+        </form>
+      </div>
+
+      <!-- Guest list of the chosen event -->
+      <div class="card">
+        <h3>Guest list</h3>
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Booking</th>
+                <th>Ticket holder</th>
+                <th>Seat(s)</th>
+                <th>Entry</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="checkinTableBody"></tbody>
+          </table>
+        </div>
+        <p class="hint">Pending and Cancelled bookings are not allowed in. Use Undo if a guest was checked in by
+          mistake.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/checkin.js"></script>
+</body>
+
+</html>
