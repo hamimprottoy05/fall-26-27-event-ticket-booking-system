@@ -1,21 +1,9 @@
-/* =====================================================================
-   checkin.js  -  Door check-in mode (checkin.html)
-   ---------------------------------------------------------------------
-   Unique 1 : Door Check-in Mode
-     checkInGuest()   : the organizer types a booking id -> "Checked In"
-     undoCheckIn()    : takes a wrong check-in back
-     renderCheckin()  : live count of the guests who have arrived
-   Only an Approved booking of the chosen event can be checked in.
-   ===================================================================== */
 
-// The organizer who is logged in. With the PHP backend this will come
-// from the session ($_SESSION) instead of being written here.
 const currentOrganizerId = "U-002";
 const currentOrganization = getOrganizationName(currentOrganizerId);
 
 
-// Fills the event drop-down with this organizer's events (createElement).
-// The event that is on today's date (if any) is chosen automatically.
+
 function fillCheckinEvents() {
   let select = document.getElementById("checkinEvent");
   let today = todayString();
@@ -35,7 +23,7 @@ function fillCheckinEvents() {
 }
 
 
-// Shows the counters, the progress bar and the guest list of the chosen event
+
 function renderCheckin() {
   let eventId = document.getElementById("checkinEvent").value;
   let area = document.getElementById("checkinArea");
@@ -51,7 +39,7 @@ function renderCheckin() {
   let event = events[findIndexById(events, eventId)];
   area.style.display = "block";
 
-  // A friendly reminder when the event is not today (check-in is still allowed)
+  
   let note = "";
   if (event.date === todayString()) {
     note = "This event is today.";
@@ -62,7 +50,7 @@ function renderCheckin() {
   }
   document.getElementById("checkinEventNote").innerHTML = note;
 
-  // Live counters
+
   let expected = expectedGuests(eventId);
   let checked = checkedInGuests(eventId);
   let percent = 0;
@@ -79,7 +67,7 @@ function renderCheckin() {
   bar.innerHTML = percent > 8 ? percent + "%" : "";
   document.getElementById("checkinBarText").innerHTML = checked + " of " + expected + " guests have arrived (" + percent + "%).";
 
-  // Guest list: every booking of this event
+  
   let rows = "";
   let list = getEventBookings(eventId);
   for (const booking of list) {
@@ -111,9 +99,7 @@ function renderCheckin() {
 }
 
 
-/* =====================================================================
-   CHECK IN (form + validation)
-   ===================================================================== */
+
 function checkInGuest() {
   let eventId = document.getElementById("checkinEvent").value;
   let idText = document.getElementById("checkinBookingId").value.trim().toUpperCase();
@@ -121,7 +107,7 @@ function checkInGuest() {
   clearErrors(["checkinEvent", "checkinBookingId"]);
   hideMessage("checkinMessage");
 
-  // ----- Validation -----
+ 
   let isValid = true;
   if (eventId === "") {
     showError("checkinEvent", "Please choose the event first.");
@@ -146,12 +132,12 @@ function checkInGuest() {
   return false;
 }
 
-// The "Check In" button in the guest list
+
 function quickCheckIn(bookingId) {
   doCheckIn(bookingId, document.getElementById("checkinEvent").value);
 }
 
-// The real work: find the booking, apply the rules, save
+
 function doCheckIn(bookingId, eventId) {
   let index = findIndexById(bookings, bookingId);
 
@@ -193,8 +179,6 @@ function undoCheckIn(bookingId) {
 }
 
 
-/* =====================================================================
-   START
-   ===================================================================== */
+
 fillCheckinEvents();
 renderCheckin();
