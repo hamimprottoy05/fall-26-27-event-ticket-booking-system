@@ -15,7 +15,7 @@
   display: none;
 }
 
-/* Three big clickable cards for Student / Librarian / Visitor */
+
 .type-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -47,7 +47,7 @@
   margin-top: 4px;
 }
 
-/* Added by JavaScript to the chosen card */
+
 .type-option.selected {
   border-color: #663399;
   background-color: #F3ECFC;
