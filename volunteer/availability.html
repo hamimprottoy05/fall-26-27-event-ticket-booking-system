@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tell the organizers when you can volunteer on EventNest">
+  <title>Availability | EventNest</title>
+  <link rel="stylesheet" href="css/volunteer.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a href="tasks.html" class="logo">Event<span>Nest</span></a>
+    <div class="user-info">
+      <span class="badge student">Volunteer</span>
+      <span>Welcome</span>
+      <a href="register.html" class="btn btn-small btn-light">Logout</a>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <a href="tasks.html">My Tasks</a>
+    <a href="availability.html" class="active">Availability</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- =========================================================
+         AVAILABILITY: Create, Read, Update and Delete
+         ========================================================= -->
+    <h2 class="page-title">Availability</h2>
+    <p class="page-subtitle">Tell the organizers on which dates and at what time you can volunteer.</p>
+
+    <div id="availabilityMessage" class="message"></div>
+
+    <div class="row">
+
+      <!-- CREATE / UPDATE form -->
+      <div class="col">
+        <div class="card">
+          <h3 id="availabilityFormTitle">Set Availability</h3>
+          <form id="availabilityForm" onsubmit="return saveAvailability()">
+            <fieldset>
+              <legend>Availability Details</legend>
+              <table class="form-table">
+                <tr>
+                  <td>Status: *</td>
+                  <td>
+                    <input type="radio" id="statusAvailable" name="availStatus" value="Available" checked>
+                    <label for="statusAvailable" class="option-label">Available</label>
+                    <input type="radio" id="statusUnavailable" name="availStatus" value="Unavailable">
+                    <label for="statusUnavailable" class="option-label">Unavailable</label>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="dateInput">Dates: *</label></td>
+                  <td>
+                    <div class="date-adder">
+                      <input type="date" id="dateInput">
+                      <button type="button" class="btn btn-secondary" onclick="addDate()">Add Date</button>
+                    </div>
+                    <div class="chips" id="dateChips"></div>
+                    <span class="error" id="datesError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Time slots:</td>
+                  <td>
+                    <input type="checkbox" id="slotMorning" name="slot" value="Morning (8 AM - 12 PM)">
+                    <label for="slotMorning" class="option-label">Morning (8 AM - 12 PM)</label><br>
+                    <input type="checkbox" id="slotAfternoon" name="slot" value="Afternoon (12 PM - 4 PM)">
+                    <label for="slotAfternoon" class="option-label">Afternoon (12 PM - 4 PM)</label><br>
+                    <input type="checkbox" id="slotEvening" name="slot" value="Evening (4 PM - 8 PM)">
+                    <label for="slotEvening" class="option-label">Evening (4 PM - 8 PM)</label>
+                    <span class="error" id="slotsError"></span>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="availNote">Note:</label></td>
+                  <td>
+                    <input type="text" id="availNote" maxlength="120" placeholder="Optional, e.g. Exam on Sunday">
+                  </td>
+                </tr>
+              </table>
+            </fieldset>
+            <p class="hint">Time slots are needed only when you are available.</p>
+
+            <input type="submit" id="availabilitySaveButton" class="btn" value="Save Availability">
+            <button type="button" id="availabilityCancelButton" class="btn btn-secondary" onclick="resetAvailabilityForm()">Clear Form</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- READ: saved records, with Edit and Delete -->
+      <div class="col-wide">
+        <div class="card">
+          <h3>Saved availability</h3>
+          <p class="result-count" id="availabilityCount"></p>
+          <div id="availabilityList"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    &copy; 2026 EventNest &middot; Event and Ticket Booking System
+  </footer>
+
+  <script src="js/volunteer-data.js"></script>
+  <script src="js/volunteer-common.js"></script>
+  <script src="js/volunteer-availability.js"></script>
+</body>
+
+</html>
