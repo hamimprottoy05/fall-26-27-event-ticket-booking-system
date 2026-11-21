@@ -1077,7 +1077,7 @@ input[type="checkbox"] {
   color: #663399;
 }
 
-/* The QR code side is separated by a dashed line, like a torn ticket */
+
 .ticket-qr {
   flex: 1;
   min-width: 170px;
@@ -1097,12 +1097,11 @@ input[type="checkbox"] {
 }
 
 
-/* =====================================================================
+/* 
    UNIQUE FEATURES
-   ===================================================================== */
+   */
 
-/* Unique 1 (check-in page): the counters and the guest list stay hidden
-   until an event is chosen; checkin.js sets style.display */
+
 .checkin-area {
   display: none;
 }
@@ -1111,7 +1110,7 @@ input[type="checkbox"] {
   max-width: 420px;
 }
 
-/* Unique 2 (sales page): one block per event with its progress bar */
+
 .target-item {
   padding: 10px 0;
   border-bottom: 1px solid #EEEAF5;
@@ -1126,7 +1125,7 @@ input[type="checkbox"] {
 }
 
 .target-item .progress-fill {
-  min-width: 36px;          /* the percent text stays readable for small values */
+  min-width: 36px;         
 }
 
 
